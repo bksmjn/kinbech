@@ -32,14 +32,14 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User findByUserName(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+		User user=(User)this.sessionFactory.getCurrentSession().getNamedQuery(User.FIND_BY_USERNAME).setParameter("userName", userName).uniqueResult();
+		return user;
 	}
 
 	@Override
 	public List<User> findAllUser() {
-		// TODO Auto-generated method stub
-		return null;
+		List<User> users=this.sessionFactory.getCurrentSession().getNamedQuery(User.FIND_ALL).list();
+		return users;
 	}
 
 	@Override

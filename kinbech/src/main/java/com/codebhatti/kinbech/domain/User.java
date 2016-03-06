@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -18,12 +20,20 @@ import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name="users")
+@NamedQueries({
+	@NamedQuery(name=User.FIND_BY_USERNAME,query="SELECT u from User u where u.userName=:userName"),
+	@NamedQuery(name=User.FIND_ALL,query="SELECT u FROM User u")
+})
 public class User implements Serializable {
 	
 	private String userName;
 	private String password;
 	private Account account;
 	private List<Address> addresses;
+	
+	private static final String DOMAIN_PREFIX="com.codebhatti.kinbech.User";
+	public static final String FIND_BY_USERNAME=DOMAIN_PREFIX+"FIND_BY_USERNAME";
+	public static final String FIND_ALL=DOMAIN_PREFIX+"FIND_ALL";
 	
 	public User() {
 		this.account=new Account();
