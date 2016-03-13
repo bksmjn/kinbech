@@ -2,14 +2,30 @@ package com.codebhatti.kinbech.serviceimpl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import com.codebhatti.kinbech.domain.User;
+import com.codebhatti.kinbech.repository.UserRepository;
 import com.codebhatti.kinbech.service.UserService;
 
+@Service
+@Transactional
 public class UserServiceImpl implements UserService {
+	
+	@Autowired
+	private UserRepository userRepository;
 
 	@Override
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public void addUser(User user) {
-		// TODO Auto-generated method stub
+		try{
+			this.userRepository.save(user);
+		}catch(IllegalArgumentException ex){
+			throw new IllegalArgumentException(ex.getMessage());
+		}
+		
 		
 	}
 
@@ -25,4 +41,14 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
+	public UserRepository getUserRepository() {
+		return userRepository;
+	}
+
+	public void setUserRepository(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
+
+	
+	
 }
