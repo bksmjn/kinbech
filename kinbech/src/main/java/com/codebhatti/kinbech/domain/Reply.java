@@ -1,4 +1,4 @@
-package com.codebhatti.kinbech.domain;
+/*package com.codebhatti.kinbech.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -44,3 +44,4 @@ public class Reply {
 		this.user = user;
 	}			
 }
+*/
