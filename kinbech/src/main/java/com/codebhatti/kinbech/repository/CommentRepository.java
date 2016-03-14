@@ -7,10 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import com.codebhatti.kinbech.domain.Comment;
 
-@Repository
+//@Repository
 public interface CommentRepository extends CrudRepository<Comment, Long>{
 
-	@Query("select comment from comment c where c.productId=: productId")
+	//@Query("select comment from comment c where productId = :productId")
 	public Comment getCommentByProductId(@Param("productId") Long productId);
 	
 }
