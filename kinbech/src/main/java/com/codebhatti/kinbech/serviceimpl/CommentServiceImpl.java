@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.codebhatti.kinbech.domain.Comment;
 import com.codebhatti.kinbech.domain.Post;
-import com.codebhatti.kinbech.domain.Reply;
+//import com.codebhatti.kinbech.domain.Reply;
 import com.codebhatti.kinbech.repository.CommentRepository;
 import com.codebhatti.kinbech.service.CommentService;
 
@@ -34,10 +34,10 @@ public class CommentServiceImpl implements CommentService{
 		
 	}
 
-	@Override
+	/*@Override
 	public void put(Long commentId, Long postId, Reply reply) {
 		// TODO Auto-generated method stub
 		
-	}
+	}*/
 
 }
