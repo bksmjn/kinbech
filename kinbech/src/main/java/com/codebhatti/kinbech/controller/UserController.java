@@ -16,15 +16,15 @@ import com.codebhatti.kinbech.domain.User;
 import com.codebhatti.kinbech.service.UserService;
 
 @Controller
-@RequestMapping(value="/user")
+@RequestMapping(value="/users")
 public class UserController {
 	
 	@Autowired
 	private UserService  userService;
 	
-	@RequestMapping(value="/add",method=RequestMethod.GET)
+	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public String getUserAddForm(@ModelAttribute("user")User user){
-		return "UserAdd";
+		return "login";
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)

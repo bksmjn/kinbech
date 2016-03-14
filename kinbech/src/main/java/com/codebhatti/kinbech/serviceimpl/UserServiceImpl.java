@@ -18,7 +18,6 @@ public class UserServiceImpl implements UserService {
 	private UserRepository userRepository;
 
 	@Override
-	@Transactional(propagation=Propagation.REQUIRES_NEW)
 	public void addUser(User user) {
 		try{
 			this.userRepository.save(user);
