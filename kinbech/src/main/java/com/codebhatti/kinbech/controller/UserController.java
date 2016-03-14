@@ -1,6 +1,5 @@
 package com.codebhatti.kinbech.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -16,25 +15,19 @@ import com.codebhatti.kinbech.domain.User;
 import com.codebhatti.kinbech.service.UserService;
 
 @Controller
-@RequestMapping(value="/users")
 public class UserController {
-	
+
 	@Autowired
-	private UserService  userService;
-	
-	@RequestMapping(value="/login",method=RequestMethod.GET)
-	public String getUserAddForm(@ModelAttribute("user")User user){
-		return "login";
-	}
-	
-	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public void addUser(@ModelAttribute("user")User user,BindingResult result){
-		try{
+	private UserService userService;
+
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public void addUser(@ModelAttribute("user") User user, BindingResult result) {
+		try {
 			this.userService.addUser(user);
-		}catch(IllegalArgumentException ex){
+		} catch (IllegalArgumentException ex) {
 			throw new IllegalArgumentException(ex.getMessage());
 		}
-		
+
 	}
 
 	public UserService getUserService() {
@@ -44,7 +37,5 @@ public class UserController {
 	public void setUserService(UserService userService) {
 		this.userService = userService;
 	}
-	
-	
 
 }
