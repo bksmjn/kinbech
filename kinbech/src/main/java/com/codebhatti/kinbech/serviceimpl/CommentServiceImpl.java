@@ -12,32 +12,34 @@ import com.codebhatti.kinbech.service.CommentService;
 
 @Service
 @Transactional
-public class CommentServiceImpl implements CommentService{
+public class CommentServiceImpl implements CommentService {
 
 	@Autowired
 	CommentRepository commentRepository;
+
 	@Override
 	public Comment get(Long productId) {
-		
+
 		return commentRepository.getCommentByProductId(productId);
 	}
 
 	@Override
 	public void save(Comment comment) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void put(Long CommentId, Post post) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
-	/*@Override
-	public void put(Long commentId, Long postId, Reply reply) {
-		// TODO Auto-generated method stub
-		
-	}*/
+	/*
+	 * @Override public void put(Long commentId, Long postId, Reply reply) { //
+	 * TODO Auto-generated method stub
+	 * 
+	 * }
+	 */
 
 }
