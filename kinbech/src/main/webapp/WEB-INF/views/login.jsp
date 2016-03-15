@@ -15,7 +15,7 @@
 		<input type="text" name="username"/>
 		<br>
 		<label for="password">Password:</label>
-		<input type="password" name="username"/>
+		<input type="password" name="password"/>
 		<br>
 		<input type="submit" />
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
