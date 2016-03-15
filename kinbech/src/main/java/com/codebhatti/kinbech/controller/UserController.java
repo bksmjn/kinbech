@@ -4,11 +4,15 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import com.codebhatti.kinbech.domain.Address;
 import com.codebhatti.kinbech.domain.Credential;
@@ -18,6 +22,7 @@ import com.codebhatti.kinbech.service.UserService;
 
 @Controller
 @RequestMapping("/users")
+@SessionAttributes("newuser")
 public class UserController {
 
 	@Autowired
@@ -25,7 +30,8 @@ public class UserController {
 	@Autowired CredentialService credentialService;
 	
 	@RequestMapping(value="/add",method=RequestMethod.GET)
-	public String getUserForm(@ModelAttribute("user") User user){
+	public String getUserForm(@ModelAttribute("user") User user, @ModelAttribute("address") Address address, Model model){
+		model.addAttribute("newuser", user);
 		return "UserAdd";
 	}
 
@@ -38,8 +44,11 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/addAddress",method=RequestMethod.POST)
-	public void addAddress(@RequestBody @ModelAttribute("address") Address address, BindingResult result){
-		System.out.println("Inside Add Address");
+	public String addAddress(@RequestBody @ModelAttribute("address") Address address, BindingResult result, SessionStatus status, Model model){
+		User u=(User)((ModelMap) model).get("newuser");
+		u.getAddresses().add(address);
+		System.out.println("Inside Add Address"+u.getAddresses().size());
+		return "UserAdd";
 		
 	}
 

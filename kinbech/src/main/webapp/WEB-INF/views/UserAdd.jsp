@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,7 +12,8 @@
 	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script type="text/javascript"
 	src="<spring:url value="/resource/js/ajax.js"/>"></script>
-<link rel="stylesheet" type="text/css" href="<spring:url value="/css/main.css" />" />
+<link rel="stylesheet" type="text/css"
+	href="<spring:url value="/css/main.css" />" />
 </head>
 <body>
 	<div id="global">
@@ -27,59 +29,54 @@
 			</fieldset>
 
 		</form:form>
-		<input type="button" value="Add Address"
-			onclick="make_visible('formInput');return false;"> <input
-			type="submit" value="Add User" />
 	</div>
 
-	<div id="formInput" style="display: none">
+	<div id="global">
+		<form:form modelAttribute="address" method="POST" action="addAddress">
+			<fieldset>
+				<legend> Add Address</legend>
+				<label for="street">Street: </label>
+				<form:input path="street" id="street" />
+				<br> <label for="zipCode">Zip Code:</label>
+				<form:input path="zipCode" id="zipCode" />
+				<br> <label for="state">State:</label>
+				<form:input path="state" id="state" />
+				<br> <label for="mailBoxNumber">Mail Box No:</label>
+				<form:input path="mailBoxNumber" id="mailBoxNumber" />
+				<br> <label for="phoneNumber">Phone Number:</label>
+				<form:input path="phoneNumber" id="phoneNumber" />
+				<br> <label for="mobileNumber">Mobile Number:</label>
+				<form:input path="mobileNumber" id="mobileNumber" />
+				<br> <label for="billingAddress">Billing Address:</label>
+				<form:input path="billingAddress" id="billingAddress" />
+				<input type="submit" value="Add Address">
+			</fieldset>
 
-		<h3 align="center">Address</h3>
-		<!-- No action method handled by AJAX-->
-		<form id="addressForm" method="post">
-			<p>
-				<label for="street"> Street : </label> <input type="text"
-					name="street" id="street" value="" />
-			</p>
+		</form:form>
+	</div>
+	<div id="global">
+		<h1>Address List</h1>
+		<table>
+			<tr style="width: 100%;">
+				<th style="width: 19%;">Street</th>
+				<th style="width: 21%;">Mobile Number</th>
+				<th style="width: 21%;">Zip Code</th>
+				<th style="width: 21%;">State</th>
+				<th style="width: 23%;">Billing Address</th>
+			</tr>
+			<c:forEach items="${user.addresses}" var="address">
+				<tr>
+					<td>${address.street}</td>
+					<td>${address.mobileNumber}</td>
+					<td>${address.zipCode}</td>
+					<td>${address.state}</td>
+					<td>${address.billingAddress}</td>
+				</tr>
+			</c:forEach>
+		</table>
 
-			<p>
-				<label for="zipCode"> ZipCode: </label> <input id="zipCode"
-					name="zipCode" type="text" />
-			</p>
-
-			<p>
-				<label for="state"> State: </label> <input id="state" name="state"
-					type="text" />
-			</p>
-
-			<p>
-				<label for="mailBoxNo"> Mail Box No: </label> <input id="mailBoxNo"
-					name="mailBoxNo" type="text" />
-			</p>
-			<p>
-				<label for="phoneNumber"> Phone Number: </label> <input
-					id="phoneNumber" name="phoneNumber" type="text" />
-			</p>
-			<p>
-				<label for="mobileNumber"> Mobile Number: </label> <input
-					id="mobileNumber" name="mobileNumber" type="text" />
-			</p>
-
-			<p>
-				<label for="billingAddress"> Billing Address: </label> <input
-					id="billingAddress" name="billingAddress" type="text" />
-			</p>
-			<input type="button" value="Add Address"
-				onclick="addressSubmit();return false;">
-
-		</form>
-		<h4 align="center">
-			<a href="#"
-				onclick="make_hidden('formInput'); make_hidden('result');resetForm('addressForm');">
-				<b>EXIT</b>
-			</a>
-		</h4>
-
+		<input type="button" value="Add Category"
+			onclick="make_visible('formInput');return false;">
 
 	</div>
 
