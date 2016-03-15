@@ -1,13 +1,12 @@
 package com.codebhatti.kinbech.domain;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,10 +16,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-
-import org.springframework.web.multipart.MultipartFile;
-
-import com.codebhatti.kinbech.enums.ProductType;
 
 /**
  * 
@@ -76,6 +71,7 @@ public class Product {
 	private List<ProductCopy> productCopyList;
 
 	public Product() {
+		this.productCopyList=new ArrayList<>();
 	}
 
 	public Long getProductId() {
@@ -174,12 +170,12 @@ public class Product {
 		this.imageFile = imageFile;
 	}*/
 	
-	@Override
-	public String toString() {
-		return "Product [productId=" + productId + ", sellerId=" + sellerId + ", title=" + title + ", description="
-				+ description + ", imagePath=" + imagePath + ", quantityWhenUpload=" + quantityWhenUpload
-				+ ", categoryId=" + categoryId + ", unitPrice=" + unitPrice + ", productType=" + productType
-				+ ", createdOn=" + createdOn + ", modifiedOn=" + modifiedOn + ", productCopyList=" + productCopyList
-				+ "]";
+	public List<ProductCopy> getProductCopyList() {
+		return productCopyList;
 	}
+
+	public void setProductCopyList(List<ProductCopy> productCopyList) {
+		this.productCopyList = productCopyList;
+	}
+
 }

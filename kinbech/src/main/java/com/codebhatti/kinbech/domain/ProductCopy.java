@@ -26,10 +26,11 @@ public class ProductCopy {
 	private Product product;
 	
 	@Column(name="PRODUCT_STATUS")
-	private ProductStatus productStatus=ProductStatus.NOT_SOLD;
+	private String productStatus="NOT_SOLD";
+	//private ProductStatus productStatus=ProductStatus.NOT_SOLD;
 	
 	@OneToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="username")
+	@JoinColumn(name="buyer")
 	private User buyer;
 	
 	public ProductCopy() {}
@@ -50,11 +51,11 @@ public class ProductCopy {
 		this.product = product;
 	}
 
-	public ProductStatus getProductStatus() {
+	public String getProductStatus() {
 		return productStatus;
 	}
 
-	public void setProductStatus(ProductStatus productStatus) {
+	public void setProductStatus(String productStatus) {
 		this.productStatus = productStatus;
 	}
 
@@ -66,9 +67,4 @@ public class ProductCopy {
 		this.buyer = buyer;
 	}
 
-	@Override
-	public String toString() {
-		return "ProductCopy [id=" + id + ", product=" + product.toString() + ", productStatus=" + productStatus + ", buyer="
-				+ buyer.toString() + "]";
-	}	
 }
