@@ -9,7 +9,13 @@
 
 	<!-- Database -->
 	<jdbc:embedded-database id="datasource" type="H2"></jdbc:embedded-database>
-
+<!-- <bean id="datasource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/kinbech_test" />
+		<property name="username" value="root" />
+		<property name="password" value="mysql" />
+	</bean> -->
 
 	<!-- Entity Manager -->
 	<bean id="entityManagerFactory"
