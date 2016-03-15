@@ -1,33 +1,33 @@
 package com.codebhatti.kinbech.controller;
 
-import java.security.MessageDigest;
-
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
+import com.codebhatti.kinbech.domain.Address;
 import com.codebhatti.kinbech.domain.Credential;
 import com.codebhatti.kinbech.domain.User;
 import com.codebhatti.kinbech.service.CredentialService;
 import com.codebhatti.kinbech.service.UserService;
 
 @Controller
-@Transactional
+@RequestMapping("/users")
 public class UserController {
 
 	@Autowired
 	private UserService userService;
 	@Autowired CredentialService credentialService;
+	
+	@RequestMapping(value="/add",method=RequestMethod.GET)
+	public String getUserForm(@ModelAttribute("user") User user){
+		return "UserAdd";
+	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public void addUser(@ModelAttribute("user") User user, BindingResult result){
@@ -35,6 +35,12 @@ public class UserController {
 			Credential credential=new Credential(user.getUserName(), hashedPassword);
 			this.userService.addUser(user);
 
+	}
+	
+	@RequestMapping(value="/addAddress",method=RequestMethod.POST)
+	public void addAddress(@RequestBody @ModelAttribute("address") Address address, BindingResult result){
+		System.out.println("Inside Add Address");
+		
 	}
 
 	public UserService getUserService() {
