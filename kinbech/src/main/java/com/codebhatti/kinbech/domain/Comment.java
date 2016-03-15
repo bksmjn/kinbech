@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,17 +14,19 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "comment")
+@Table(name="comment")
 public class Comment implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="commentid")
 	private Long commentId;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	private List<Post> posts;
+	/*@OneToMany(cascade=CascadeType.ALL)
+	private List<Post> posts;*/
 	
 	@NotNull
+	@Column(name="productid")
 	private Long productId;
 	
 	public Long getCommentId() {
@@ -34,13 +37,13 @@ public class Comment implements Serializable {
 		this.commentId = commentId;
 	}
 
-	public List<Post> getPosts() {
+/*	public List<Post> getPosts() {
 		return posts;
 	}
 
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
-	}
+	}*/
 
 	public Long getProductId() {
 		return productId;

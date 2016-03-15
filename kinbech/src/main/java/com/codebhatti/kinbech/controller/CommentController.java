@@ -17,7 +17,7 @@ public class CommentController {
 	@Autowired
 	CommentService commentService;
 
-	@RequestMapping(value=("/{productId}"),method=RequestMethod.POST)
+	@RequestMapping(value=("/{productId}"),method=RequestMethod.GET)
 	public @ResponseBody Comment getComment(@PathVariable("productId")Long productId)
 	{
 		return commentService.get(productId);
