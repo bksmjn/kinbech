@@ -7,6 +7,16 @@
 <title>Product Detail</title>
 </head>
 <body>
-
+	Name : ${product.title}
+	<br />
+	Description: ${product.description}
+	<br />
+	Name : ${newProduct.title}
+	<br />
+	Description: ${newProduct.description}
+	<br />
+	Name : ${savedProduct.title}
+	<br />
+	Description: ${savedProduct.description}
 </body>
 </html>

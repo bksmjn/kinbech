@@ -44,8 +44,8 @@ public class Product {
 	@Column(name="description")
 	String description;
 	
-	@Transient
-	MultipartFile imageFile;
+	/*@Transient
+	MultipartFile imageFile;*/
 	
 	@Transient
 	@Column(name="imagepath")
@@ -61,8 +61,8 @@ public class Product {
 	Double unitPrice;
 	
 	@Column(name="producttype")
-	@Enumerated(EnumType.STRING)
-	ProductType productType;
+	//@Enumerated(EnumType.STRING)
+	String productType;
 	
 	@Column(name="createdon")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -158,19 +158,28 @@ public class Product {
 		this.modifiedOn = modifiedOn;
 	}
 
-	public ProductType getProductType() {
+	public String getProductType() {
 		return productType;
 	}
 
-	public void setProductType(ProductType productType) {
+	public void setProductType(String productType) {
 		this.productType = productType;
 	}
 
-	public MultipartFile getImageFile() {
+	/*public MultipartFile getImageFile() {
 		return imageFile;
 	}
 
 	public void setImageFile(MultipartFile imageFile) {
 		this.imageFile = imageFile;
+	}*/
+	
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", sellerId=" + sellerId + ", title=" + title + ", description="
+				+ description + ", imagePath=" + imagePath + ", quantityWhenUpload=" + quantityWhenUpload
+				+ ", categoryId=" + categoryId + ", unitPrice=" + unitPrice + ", productType=" + productType
+				+ ", createdOn=" + createdOn + ", modifiedOn=" + modifiedOn + ", productCopyList=" + productCopyList
+				+ "]";
 	}
 }

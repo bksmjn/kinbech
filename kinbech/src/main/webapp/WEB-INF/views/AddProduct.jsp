@@ -31,8 +31,8 @@
 		<form:errors path="unitPrice" class="errors" />
 		Unit Price : <form:input path="unitPrice" tabindex="5" />
 		<br />
-		<form:errors path="imagePath" class="errors" />
-		Upload a image : <input type="file" name="imageFile" />
+		<%-- <form:errors path="imagePath" class="errors" />
+		Upload a image : <input type="file" name="imageFile" /> --%>
 		<br />
 		<br />
 		<input type="submit" value="Submit" />
