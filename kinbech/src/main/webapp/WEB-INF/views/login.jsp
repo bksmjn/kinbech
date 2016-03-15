@@ -8,9 +8,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Default Login</title>
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script type="text/javascript"
+	src="<spring:url value="/resource/js/ajax.js"/>"></script>
+<link rel="stylesheet" type="text/css" href="<spring:url value="/css/main.css" />" />
 </head>
 <body>
-	<form method="POST" action="DoLogin">
+<div id="global">
+<form method="POST" action="DoLogin">
+	<fieldset>
+	<legend>Login</legend>
 		<label for="userName">User Name:</label>
 		<input type="text" name="username"/>
 		<br>
@@ -19,6 +27,9 @@
 		<br>
 		<input type="submit" />
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		</fieldset>
 	</form>
+</div>
+	
 </body>
 </html>
