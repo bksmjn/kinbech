@@ -22,12 +22,14 @@ public class Comment implements Serializable {
 	@Column(name="commentid")
 	private Long commentId;
 	
-	/*@OneToMany(cascade=CascadeType.ALL)
-	private List<Post> posts;*/
+	@OneToMany(cascade=CascadeType.ALL)
+	private List<Post> posts;
 	
 	@NotNull
 	@Column(name="productid")
 	private Long productId;
+	
+	public Comment(){}
 	
 	public Long getCommentId() {
 		return commentId;
@@ -37,13 +39,13 @@ public class Comment implements Serializable {
 		this.commentId = commentId;
 	}
 
-/*	public List<Post> getPosts() {
+	public List<Post> getPosts() {
 		return posts;
 	}
 
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
-	}*/
+	}
 
 	public Long getProductId() {
 		return productId;
@@ -53,6 +55,17 @@ public class Comment implements Serializable {
 		this.productId = productId;
 	}
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		StringBuilder str = new StringBuilder();
+		for(Post post :posts){
+			str.append(post.getPostMessage()+"post by : "+post.getUsername()+"\n");
+		}
+		str.append(this.commentId+"\n");
+		str.append(this.productId+"\n");
+		return str.toString();
+	}
 
 }
 
