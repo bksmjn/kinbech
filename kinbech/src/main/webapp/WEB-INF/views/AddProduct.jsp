@@ -11,7 +11,7 @@
 	href="<spring:url value="/css/main.css" />" />
 </head>
 <body>
-	<div id="productsectionheader">
+		<div id="productsectionheader">
 	ADD A NEW PRODUCT:
 	</div>
 	<br/><br/>
@@ -22,6 +22,16 @@
 	    <input type="text" name="productname" ><br><br/>
 	    Product Description:<br>
 	    <textarea name="productdescription" cols="100px" rows="20px"></textarea><br><br>
+	<br/><br/>
+		Product Category:<br/>
+		<select name="category">
+		<option value="Electronics">Electronics</option>
+		<option value="Apparel">Apparel</option>
+		</select>
+		<br/>
+		<br/>
+		Product Quantity:
+		<input type="text" name="quantity"/><br/><br/>
 		Upload An Image<br/><input type="file" name="image"><br/><br/>
 	    <input type="submit" value="Submit">
 	  </fieldset>
