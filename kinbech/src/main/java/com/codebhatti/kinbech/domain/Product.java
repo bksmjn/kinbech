@@ -178,4 +178,11 @@ public class Product {
 		this.productCopyList = productCopyList;
 	}
 
+	public String getProductAsString() {
+		return "Product [productId=" + productId + ", sellerId=" + sellerId + ", title=" + title + ", description="
+				+ description + ", imagePath=" + imagePath + ", quantityWhenUpload=" + quantityWhenUpload
+				+ ", categoryId=" + categoryId + ", unitPrice=" + unitPrice + ", productType=" + productType
+				+ ", createdOn=" + createdOn + ", modifiedOn=" + modifiedOn + ", productCopyList=" + productCopyList
+				+ "]";
+	}
 }

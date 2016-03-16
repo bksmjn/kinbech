@@ -37,7 +37,8 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/ProductDetail", method=RequestMethod.GET) 
-	public String getProductDetailPage() {
+	public String getProductDetailPage(@ModelAttribute("productdetail")Product product,
+			Model model) {
 		System.out.println("getProductDetailPage()");
 		return "ProductDetail";
 	}
@@ -52,10 +53,10 @@ public class ProductController {
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public String postAddProductPage(@ModelAttribute("newProduct")Product newProduct,
 			BindingResult bindingResult, RedirectAttributes redirectAttributes) {
-		System.out.println("postAddProductPage="+newProduct.toString());
+		System.out.println("postAddProductPage="+newProduct.getProductAsString());
 		Product savedProduct = productService.saveOrUpdate(newProduct);
 		redirectAttributes.addFlashAttribute("product", savedProduct);
-		System.out.println("savedProduct="+savedProduct.toString());
+		System.out.println("savedProduct="+savedProduct.getProductAsString());
 		return "redirect:/products/ProductDetail";
 	}
 }

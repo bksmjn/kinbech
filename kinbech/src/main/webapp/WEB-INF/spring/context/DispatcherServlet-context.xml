@@ -16,6 +16,7 @@
 	<mvc:annotation-driven conversion-service="conversionService" />
 	<context:component-scan base-package="com.codebhatti.kinbech.controller" />
 	<context:component-scan base-package="com.codebhatti.kinbech.formatter" />
+	<context:component-scan base-package="com.codebhatti.kinbech.domain" />
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

@@ -8,24 +8,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Product Detail</title>
+<title>View Cart</title>
 </head>
 <body>
-	Name : ${product.title}
-	<br />
-	Description: ${product.description}
-	<br />
-	Available: ${fn:length(product.productCopyList)} available
-	
-	<br />
-	<form action='<spring:url value="/AddToCart"></spring:url>' 
-			method="POST">
-		<input type="hidden" name="productId" value="${product.productId}" />
-		Quantity : <input type="text" name="quantity" />
-		<br />
-		
-		<input type="submit" value="Add to Cart">
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-	</form>
+	<c:forEach items="${myCart.cartItems}" var="item">
+		<p>Item : ${item.value.productId} 
+		   <br />
+			Quantity : ${item.value.quantity}
+		</p>
+	</c:forEach>
 </body>
 </html>
