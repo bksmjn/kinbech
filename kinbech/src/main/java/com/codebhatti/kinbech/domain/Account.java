@@ -18,7 +18,7 @@ public class Account implements Serializable{
 
 	private Long accountId;
 	private double balance;
-	private boolean isActive;
+	private boolean isActive=true;
 
 	public Account(){
 	}

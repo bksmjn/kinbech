@@ -12,15 +12,14 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
-
-import com.codebhatti.kinbech.domain.Credential;
 import com.codebhatti.kinbech.domain.Identity;
-import com.codebhatti.kinbech.service.CredentialService;
+import com.codebhatti.kinbech.domain.User;
+import com.codebhatti.kinbech.service.UserService;
 
 public class CustomAuthenticator implements AuthenticationProvider {
 
 	@Autowired
-	private CredentialService credentialService;
+	private UserService userService;
 	@Autowired
 	private Identity identity;
 
@@ -30,12 +29,12 @@ public class CustomAuthenticator implements AuthenticationProvider {
 
 	@Override
 	public Authentication authenticate(Authentication a) throws AuthenticationException {
-		Credential c = credentialService.findById(a.getName());
+		User user=this.userService.findByUserName(a.getName());
 		String hashedPassword = Base64.encodeBase64String(DigestUtils.sha256(a.getCredentials().toString()));
-		if (c == null) {
+		if (user == null) {
 			return null;
 		} else {
-				identity.setUserName(c.getUserName());
+				identity.setUserName(user.getUserName());
 				List<GrantedAuthority> grantedAuth = new ArrayList<GrantedAuthority>();
 				grantedAuth.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 				Authentication auth = new UsernamePasswordAuthenticationToken(a.getName(),

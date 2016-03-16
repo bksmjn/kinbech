@@ -1,7 +1,12 @@
+<<<<<<< Updated upstream
+=======
  
 INSERT INTO credentials(username,password,is_active) VALUES ('admin','pmWkWSBCL51Bfkhn79xPuKBKHz//H6B+mY6G9/eieuM=',TRUE);
+INSERT INTO user_account(is_active, balance) VALUES (1, 10000.0);
+INSERT INTO user_account(is_active, balance) VALUES (1, 30000.0);
 
-#comment table
+>>>>>>> Stashed changes
+
 insert into comment (commentid,productid) values (1,1);
 insert into comment (commentid,productid) values (2,2);
 insert into comment (commentid,productid) values (3,3);

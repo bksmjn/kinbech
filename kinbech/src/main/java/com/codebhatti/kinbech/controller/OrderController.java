@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.codebhatti.kinbech.domain.Order;
+import com.codebhatti.kinbech.domain.Cart;
 import com.codebhatti.kinbech.domain.User;
 import com.codebhatti.kinbech.exception.BusinessException;
 import com.codebhatti.kinbech.service.OrderService;
+import com.codebhatti.kinbech.service.ProductCopyService;
 import com.codebhatti.kinbech.service.UserService;
 
 @Controller
@@ -24,18 +24,23 @@ public class OrderController {
 	@Autowired
 	private UserService userService;
 	
-	@RequestMapping(value="/Process", method=RequestMethod.GET)
+	@Autowired
+	private ProductCopyService productCopyService;
+	
+	@Autowired
+	private Cart cart;
+	
+	@RequestMapping(value="/Checkout", method=RequestMethod.GET)
 	public String getProcessOrder() {
-		return "ProcessOrder";
+		return "CheckOut";
 	}
 	
-	@RequestMapping(value="/Process", method=RequestMethod.POST)
-	public String postProcessOrder(Order order,@RequestParam("productId")Long productId, RedirectAttributes redirectAttributes, 
-			Principal principal) throws BusinessException {
-		System.out.println(order.getQuantity());
+	@RequestMapping(value="/Checkout", method=RequestMethod.POST)
+	public String postProcessOrder(Principal principal, RedirectAttributes redirectAttributes) throws BusinessException {
 		User user = userService.findByUserName(principal.getName());
-		orderService.makeOrder(user, order);
-		return "redirect:/Order/Process";
+		Boolean success=orderService.processOrder(user, cart);
+		redirectAttributes.addFlashAttribute("success", success);
+		return "redirect:/Order/Checkout";
 	}
 
 }
