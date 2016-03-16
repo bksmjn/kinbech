@@ -32,7 +32,7 @@ public class OrderController {
 	
 	@RequestMapping(value="/Checkout", method=RequestMethod.GET)
 	public String getProcessOrder() {
-		return "CheckOut";
+		return "Checkout";
 	}
 	
 	@RequestMapping(value="/Checkout", method=RequestMethod.POST)
