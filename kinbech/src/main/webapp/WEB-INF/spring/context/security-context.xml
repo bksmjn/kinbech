@@ -48,7 +48,7 @@
 		<!-- Comment out login-page through logoinfailed for BASIC -->
 		<security:form-login
 			login-page="/login"
-			default-target-url="/products/Add"
+			default-target-url="/home"
 			always-use-default-target="true"
 			username-parameter="username" 
 			password-parameter="password"
