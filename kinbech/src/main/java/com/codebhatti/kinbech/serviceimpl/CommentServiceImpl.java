@@ -1,5 +1,7 @@
 package com.codebhatti.kinbech.serviceimpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,6 +35,12 @@ public class CommentServiceImpl implements CommentService {
 	public void put(Long CommentId, Post post) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public List<Comment> getAll() {
+		// TODO Auto-generated method stub
+		return commentRepository.findAll();
 	}
 
 	/*
