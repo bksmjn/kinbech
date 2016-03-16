@@ -37,6 +37,7 @@ public class OrderController {
 	
 	@RequestMapping(value="/Checkout", method=RequestMethod.POST)
 	public String postProcessOrder(Principal principal, RedirectAttributes redirectAttributes) throws BusinessException {
+		System.out.println(principal.getName());
 		User user = userService.findByUserName(principal.getName());
 		Boolean success=orderService.processOrder(user, cart);
 		redirectAttributes.addFlashAttribute("success", success);
