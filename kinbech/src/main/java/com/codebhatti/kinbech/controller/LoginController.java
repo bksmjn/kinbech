@@ -23,4 +23,9 @@ public class LoginController {
 		return "login";
  
 	}
+	
+	@RequestMapping(value="/doLogout", method=RequestMethod.GET)
+	public String doLogout(){
+		return "login";
+	}
 }

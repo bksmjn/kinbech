@@ -34,12 +34,15 @@ public class CustomAuthenticator implements AuthenticationProvider {
 		if (user == null) {
 			return null;
 		} else {
+			if(user.getPassword().equals(hashedPassword)){
 				identity.setUserName(user.getUserName());
 				List<GrantedAuthority> grantedAuth = new ArrayList<GrantedAuthority>();
 				grantedAuth.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 				Authentication auth = new UsernamePasswordAuthenticationToken(a.getName(),
 						a.getCredentials().toString(), grantedAuth);
 				return auth;
+			}
+			return null;	
 		}
 	}
 

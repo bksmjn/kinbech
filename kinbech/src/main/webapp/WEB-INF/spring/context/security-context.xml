@@ -61,7 +61,7 @@
 		<!-- default-target-url="/welcome" -->
 		<!-- always-use-default-target="true" -->
 		<!-- authentication-failure-url="/loginfailed"/> -->
-		<!-- <security:logout logout-success-url="/logout" logout-url= "/doLogout"/> -->
+		<security:logout logout-success-url="/logout" logout-url= "/doLogout"/>
 
 		<!-- <security:form-login /> -->
 

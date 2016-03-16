@@ -32,9 +32,8 @@
 				<form:input path="userName" id="userName" /><form:errors path="userName" />
 				<br> <label for="password">Password:</label>
 				<form:password path="password" id="password" /><form:errors path="password" />
-				<br> <label for="confirmpassword">Confirm Password:</label><input
-					type="password" id="confirmpassword"> <br> <label
-					for="street">Street: </label>
+				<br>
+				 <label for="street">Street: </label>
 				<form:input path="address.street" id="street" /><form:errors path="address.street" />
 				<br> <label for="zipCode">Zip Code:</label>
 				<form:input path="address.zipCode" id="zipCode" /><form:errors path="address.zipCode" />

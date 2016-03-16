@@ -25,32 +25,30 @@ public class UserController {
 	private UserService userService;
 	@Autowired
 	private Identity identity;
-	
-	
-	@RequestMapping(value="/add",method=RequestMethod.GET)
-	public String getUserForm(@ModelAttribute("user") User user, Model model){
-		System.out.println("UserName"+identity.getUserName());
+
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	public String getUserForm(@ModelAttribute("user") User user, Model model) {
+		System.out.println("UserName" + identity.getUserName());
 		return "UserAdd";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addUser(@Valid @ModelAttribute("user") User user, BindingResult result){
-		if(result.hasErrors()){
+	public String addUser(@Valid @ModelAttribute("user") User user, BindingResult result) {
+		if (result.hasErrors()) {
 			return "UserAdd";
 		}
-		String hashedPassword=Base64.encodeBase64String(DigestUtils.sha256(user.getPassword()));
-			this.userService.addUser(user);
-			return "redirect:/users/list";
+		user.setPassword(Base64.encodeBase64String(DigestUtils.sha256(user.getPassword())));
+		this.userService.addUser(user);
+		return "redirect:/users/list";
 
 	}
-	
-	@RequestMapping(value={"/","/list"},method=RequestMethod.GET)
-	public String getUserList(Model model){
-		List<User> users=userService.findAllUser();
-		model.addAttribute("users",users);
+
+	@RequestMapping(value = { "/", "/list" }, method = RequestMethod.GET)
+	public String getUserList(Model model) {
+		List<User> users = userService.findAllUser();
+		model.addAttribute("users", users);
 		return "UserList";
 	}
-	
 
 	public UserService getUserService() {
 		return userService;
@@ -68,6 +66,4 @@ public class UserController {
 		this.identity = identity;
 	}
 
-	
-	
 }
