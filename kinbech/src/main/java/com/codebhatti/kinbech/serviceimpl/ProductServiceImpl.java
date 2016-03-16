@@ -1,11 +1,16 @@
 package com.codebhatti.kinbech.serviceimpl;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.codebhatti.kinbech.domain.Product;
 import com.codebhatti.kinbech.domain.ProductCopy;
@@ -22,9 +27,12 @@ public class ProductServiceImpl implements ProductService {
 
 	@Autowired
 	private ProductCopyService productCopyService;
+	
+	@Autowired
+	private ServletContext servletContext;
 
 	@Override
-	public Product saveOrUpdate(Product product) {
+	public Product saveOrUpdate(Product product) throws IllegalStateException, IOException {
 		List<ProductCopy> newProductCopies = new ArrayList<>();
 
 		if (product != null && product.getQuantityWhenUpload() != null) {
@@ -39,6 +47,7 @@ public class ProductServiceImpl implements ProductService {
 		product.setProductCopyList(newProductCopies);
 		Product savedProduct = productRepository.save(product);
 		//productCopyService.addProductCopies(savedProduct);
+		saveImage(product.getImageFile(), savedProduct.getProductId());
 		return savedProduct;
 	}
 
@@ -55,5 +64,16 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> getAllProducts() {
 		return (List<Product>) productRepository.findAll();
+	}
+	
+	private void saveImage(MultipartFile imageFile, Long productId) throws IllegalStateException, IOException {
+		String rootDir = servletContext.getRealPath("/")+"products"+File.separator+"images";
+		File dir=new File(rootDir);
+		if(!dir.exists())
+			dir.mkdirs();
+		String ext = imageFile.getOriginalFilename().substring(imageFile.getOriginalFilename().length()-3);
+		File imgFile = new File(dir.getAbsolutePath()+File.separator+"product_"+productId+"."+ext);
+		imageFile.transferTo(imgFile);
+		
 	}
 }

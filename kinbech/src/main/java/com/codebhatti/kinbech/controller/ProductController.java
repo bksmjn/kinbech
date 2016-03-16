@@ -1,5 +1,6 @@
 package com.codebhatti.kinbech.controller;
 
+import java.io.IOException;
 import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,7 +60,7 @@ public class ProductController {
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public String postAddProductPage(@ModelAttribute("newProduct")Product newProduct,
-			BindingResult bindingResult, RedirectAttributes redirectAttributes, Principal principal) {
+			BindingResult bindingResult, RedirectAttributes redirectAttributes, Principal principal) throws IllegalStateException, IOException {
 		System.out.println("postAddProductPage="+newProduct.getProductAsString());
 		User user = userService.findByUserName(principal.getName());
 		newProduct.setSellerId(user.getUserName());
