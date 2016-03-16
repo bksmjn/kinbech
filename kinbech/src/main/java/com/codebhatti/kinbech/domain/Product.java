@@ -17,6 +17,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.springframework.web.multipart.MultipartFile;
+
 /**
  * 
  * @author tek
@@ -39,8 +41,8 @@ public class Product {
 	@Column(name="description")
 	String description;
 	
-	/*@Transient
-	MultipartFile imageFile;*/
+	@Transient
+	MultipartFile imageFile;
 	
 	@Transient
 	@Column(name="imagepath")
@@ -162,13 +164,13 @@ public class Product {
 		this.productType = productType;
 	}
 
-	/*public MultipartFile getImageFile() {
+	public MultipartFile getImageFile() {
 		return imageFile;
 	}
 
 	public void setImageFile(MultipartFile imageFile) {
 		this.imageFile = imageFile;
-	}*/
+	}
 	
 	public List<ProductCopy> getProductCopyList() {
 		return productCopyList;
