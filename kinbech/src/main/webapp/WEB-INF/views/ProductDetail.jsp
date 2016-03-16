@@ -11,21 +11,32 @@
 <title>Product Detail</title>
 </head>
 <body>
-	Name : ${product.title}
-	<br />
-	Description: ${product.description}
-	<br />
-	Available: ${fn:length(product.productCopyList)} available
+	<div id="productsectionheader">
+	Description:
+	</div>
+	<br/>
+	<div class="productimage">
+		<img width="200px" height="200px" src=""/>
+		</div>
+	<div id="productdescription">
+		<strong>Name :</strong> <span class="italicized">${product.title}</span>
+	<br /><br/>
+	<strong>Description:</strong><span class="italicized"> ${product.description}</span>
+	<br /><br/>
+	<strong>Available:</strong><span class="italicized"> ${fn:length(product.productCopyList)} </span>available
 	
-	<br />
+	<br/><br/>	
 	<form action='<spring:url value="/AddToCart"></spring:url>' 
 			method="POST">
 		<input type="hidden" name="productId" value="${product.productId}" />
 		Quantity : <input type="text" name="quantity" />
-		<br />
+		<br /><br/><br/>
 		
-		<input type="submit" value="Add to Cart">
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<input type="submit" value="Add to Cart" class="buybutton">
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"  />
 	</form>
+
+	</div>
+	
 </body>
 </html>

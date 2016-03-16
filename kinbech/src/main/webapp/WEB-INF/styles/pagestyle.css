@@ -1,32 +1,184 @@
-	/*The most basic css for starting */
-	#header{
-		width:100%;
-		float:right;
-		border-style:solid;
-		margin-bottom:10px;
+#codebhatti {
+	font-style: italic;
+}
 
-	}
-	#navigation{
-		width:100%;
-		float:right;
-		border-style:solid;
-		margin-bottom:10px;
-		text-align:center;
-	}
-	#category{
-		float:left;
-		width:10%;
-		border-style:solid;
-		margin-bottom:10px;
-	}
-	#body{
-		float:right;
-		width:85%;
-		border-style:solid;
-		
-	}
-	#footer{
-		float:right;
-		width:100%;
-		border-style:solid;
-	}
+#header {
+	width: 100%;
+	float: right;
+	margin-bottom: 10px;
+}
+
+#navigation {
+	width: 100%;
+	float: right;
+	margin-bottom: 10px;
+}
+
+#category {
+	float: left;
+	width: 10%;
+	border-style: solid;
+	margin-bottom: 10px;
+	border-width: 1px;
+	position: fixed;
+	top: 200px;
+	left: 10px;
+	box-shadow: 5px 5px 5px grey;
+}
+
+#body {
+	float: right;
+	width: 85%;
+	border-style: solid;
+	border-width: 3px;
+	min-height: 600px;
+}
+
+#footer {
+	float: right;
+	width: 100%;
+	border-style: solid;
+	margin-top: 10px;
+	border-width: 1px;
+}
+
+#productbox {
+	border-style: solid;
+	width: 95%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	float: left;
+	border-width: 1px;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+}
+
+#categoryitem {
+	margin: 10px 2px;
+	background-color: white;
+	color: black;
+}
+
+#categoryitem:hover {
+	background-color: black;
+	color: white;
+}
+
+#categoryitem>a {
+	text-decoration: none;
+}
+
+#categoryheader {
+	background-color: black;
+	color: white;
+	height: 30px;
+	text-align: center;
+	padding-top: 10px;
+}
+
+#loginzone {
+	float: right;
+	margin-right: 10px;
+	padding: 10px;
+}
+
+#navlinks {
+	float: right;
+	margin-right: 500px;
+}
+
+#navlinks>a {
+	text-decoration: none;
+	background-color: black;
+	color: white;
+	float: right;
+	margin-left: 2px;
+	padding: 10px;
+	border-width: 1px;
+	border-style: solid;
+}
+
+#navlinks>a:hover {
+	text-decoration: none;
+	float: right;
+	background-color: white;
+	color: black;
+}
+
+#productsectionheader {
+	background-color: black;
+	color: white;
+	font-size: 20px;
+	padding: 10px;
+	float: left;
+	box-shadow: 5px 5px 5px grey;
+}
+
+#cart {
+	float: right;
+	margin-right: 30px;
+	display: block;
+	padding: 10px;
+}
+
+.productdetails {
+	float: left;
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-style: italic;
+}
+
+.productimage {
+	float: left;
+	width: 100%;
+	margin-top: 20px;
+	margin-left: 10px;
+}
+
+.producttitle {
+	font-weight: bold;
+}
+
+.productinfo {
+	float: left;
+	margin-left: 10px;
+}
+
+.buybutton {
+	text-decoration: none;
+	float: left;
+	background-color: black;
+	color: white;
+	padding: 10px;
+	border-width: 1px;
+	border-style: solid;
+	box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0
+		rgba(0, 0, 0, 0.19);
+	transition-duration: 0.4s;
+}
+
+.buybutton:hover {
+	text-decoration: none;
+	float: left;
+	background-color: white;
+	color: black;
+	padding: 10px;
+	border-width: 1px;
+	border-style: solid;
+}
+
+#productdescription {
+	width: 100%;
+	float: left;
+	margin-left: 30px;
+	margin-top: 10px;
+}
+
+#productdescription strong {
+	margin-top: 10px;
+	font-style: italic;
+}
