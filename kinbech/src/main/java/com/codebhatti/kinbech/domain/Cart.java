@@ -16,6 +16,10 @@ public class Cart {
 	public Cart() {
 		cartItems=new HashMap<>();
 	}
+	
+	public void initialize() {
+		cartItems=new HashMap<>();
+	}
 
 	public Map<Long, CartItem> getCartItems() {
 		return cartItems;

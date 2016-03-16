@@ -8,18 +8,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>View Cart</title>
+<title>Checkout Order</title>
 </head>
 <body>
-	<c:forEach items="${myCart.cartItems}" var="item">
-		<p>Item : ${item.value.productId} 
-		   <br />
-			Quantity : ${item.value.quantity}
-		</p>
-	</c:forEach>
-	<form action='<spring:url value="/Order/Checkout"></spring:url>' method="POST">
-		<input type="Submit" value="Checkout" />
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-	</form>
+	<c:choose>
+		<c:when test="${success==true}">
+			Your order has been placed.
+		</c:when>
+		<c:otherwise>
+			Error in order.
+		</c:otherwise>
+	</c:choose>
 </body>
 </html>
