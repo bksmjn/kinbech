@@ -7,4 +7,5 @@ import com.codebhatti.kinbech.domain.ProductCopy;
 
 public interface ProductCopyService {
 	public List<ProductCopy> addProductCopies(Product product);
+	public Integer getTotalAvailableQuantity(Product product);
 }

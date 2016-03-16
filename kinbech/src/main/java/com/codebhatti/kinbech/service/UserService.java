@@ -12,4 +12,6 @@ public interface UserService {
 	
 	public List<User> findAllUser();
 	
+	public User deductBalance(User user, Double balance);
+	public User addBalance(User user, Double balance);
 }

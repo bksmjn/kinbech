@@ -47,6 +47,7 @@
    	<context:component-scan base-package="com.codebhatti.kinbech.serviceimpl" />
     	<context:component-scan base-package="com.codebhatti.kinbech.domain" />
     	<context:component-scan base-package="com.codebhatti.kinbech.repository" />
+    	<context:component-scan base-package="com.codebhatti.kinbech.validationimpl" />
      
    <tx:annotation-driven transaction-manager="transactionManager"/>
  

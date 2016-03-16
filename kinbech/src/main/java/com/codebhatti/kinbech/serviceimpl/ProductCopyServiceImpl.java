@@ -34,6 +34,9 @@ public class ProductCopyServiceImpl implements ProductCopyService {
 		
 		return savedProductCopies;
 	}
-	
-	
+
+	@Override
+	public Integer getTotalAvailableQuantity(Product product) {
+		return productCopyRepository.getAllProductCopies(product.getProductId()).size();
+	}
 }

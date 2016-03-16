@@ -13,7 +13,7 @@
 		<put-attribute name="footer"
 			value="/WEB-INF/template/defaultFooter.jsp" />
 	</definition>
-	<defination name="dummy" extends="defaultTemplate">
+	<definition name="dummy" extends="defaultTemplate">
 		<put-attribute name="title" value="dummytext" />
-	</defination>
+	</definition>
 </tiles-definitions>
