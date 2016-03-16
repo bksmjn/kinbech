@@ -13,11 +13,12 @@
 	href="<spring:url value="/css/main.css"/>" />
 </head>
 <body>
-	<div id="header">
-		<h2>KinBech</h2>
-		<span id="codebhatti">by codebhatti</span>
-
-	</div>
+<div id="header">
+		<h2><label><spring:message code="app.name"/></label></h2>
+		<span id="codebhatti"><label><spring:message code="app.maker"/></label></span>
+		</div>
+		<div>Language : <a href="?language=en_US">English</a>|<a href="?language=np_NP">Nepali</a>
+		</div>
 	<div id="navigation">
 		<div id="loginzone">${username}</div>
 		<div id="cart">My cart(2)</div>
