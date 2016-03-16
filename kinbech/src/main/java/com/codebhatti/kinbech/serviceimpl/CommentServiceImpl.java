@@ -33,7 +33,10 @@ public class CommentServiceImpl implements CommentService {
 
 	@Override
 	public void put(Long CommentId, Post post) {
-		// TODO Auto-generated method stub
+		
+		Comment comment = commentRepository.findOne(CommentId);
+		comment.getPosts().add(post);
+		commentRepository.save(comment);
 
 	}
 

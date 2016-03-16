@@ -1,15 +1,34 @@
 	// pathname is contextRoot/path/path/ so we want to get [1] that is where contextRoot is
 	// [0] has "" as a result of split 
 	var contextRoot = "/" + window.location.pathname.split( '/' )[1];
+	
+	
 
-function categorySubmit(){
-   	var dataToSend = JSON.stringify(serializeObject($('#categoryForm')));
+function postSubmit(){
+   	var dataToSend = JSON.stringify(serializeObject($('#')));
+   	var postmessage = $('#postmessage').val();
+   	var commentId = $('#commentid').val();
+   	var csrf = $('#')
+   	var username = $('#username');
+   	var post = {
+   			"postMessage":postmessage,
+   			"username":"dummy"
+   				};
+   	
+   	console.log(post);
+   	var token = $("meta[name='_csrf']").attr("content");
+   	var header = $("meta[name='_csrf_header']").attr("content");
+   	console.log("header : "+header+"  token : "+ token);
    	 $.ajax({
 		type: 'POST',
-		url: contextRoot + '/addCategory',
-//		url: '/Book5Rest/addCategory',
+		headers:{
+			'X-CSRF-TOKEN':token,
+			'Accept': 'application/json',
+	        'Content-Type': 'application/json' 
+		},
+		url: contextRoot + '/comment/1',
 		dataType: "json",           // Accepts
- 		data:dataToSend,
+ 		data:JSON.stringify(post),
  		contentType: 'application/json',   // Sends
 		success: function(){
 			$('#errors').html("");

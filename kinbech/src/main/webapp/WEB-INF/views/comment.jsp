@@ -8,12 +8,16 @@
 <html>
 	<head>
 		<title>comment </title>	
+		<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script type="text/javascript" src="<spring:url value="/resource/js/comment-ajax.js"/>"></script>
+	<meta name="_csrf" content="${_csrf.token}"/>
+<meta name="_csrf_header" content="${_csrf.headerName}"/>
 	</head>
 	
 	<body>
 	<!--  previously posted comments -->
 
-	<c:forEach items="${comments}" var="comment">
+	   commentId : ${comment.commentId} <br/>
        productId : ${comment.productId}
         <br/>
         <c:forEach items="${comment.posts}" var="post">
@@ -24,18 +28,20 @@
         
         <br/>
                
-	</c:forEach>
-	<%-- 	<!--  new comment -->
-		<form:form modelAttribute="newBook"  action= "${addBook }" method="post">
-         <p>
-           <label for="post"><spring:message code="post.message" /> </label>
-            <form:input path="postMessage" />
-         </p>
-        
-        <p id="buttons">
-             <input id="submit" type="submit" value="Add Book">
+	
+		<!--  new comment -->
+		add new comment : <br/>
+		                   
+            <form id="postid">
+            <input id="username" type="hidden" name="username" value="${username} "></input>
+            <input id="commentid" type="hidden" name="commentid" value="${comment.commentId} "></input>
+            <textarea id="postmessage" name="postcomment" rows="2" cols="10"></textarea>
+            </form>
+   
+        <p>
+             <input type="button" value="post comment" onclick="postSubmit();return false;">
         </p>
    
-		</form:form> --%>
+	
 	</body>
 </html>

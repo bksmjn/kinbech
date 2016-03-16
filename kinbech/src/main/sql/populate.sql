@@ -1,11 +1,4 @@
-<<<<<<< Updated upstream
-=======
- 
-INSERT INTO credentials(username,password,is_active) VALUES ('admin','pmWkWSBCL51Bfkhn79xPuKBKHz//H6B+mY6G9/eieuM=',TRUE);
-INSERT INTO user_account(is_active, balance) VALUES (1, 10000.0);
-INSERT INTO user_account(is_active, balance) VALUES (1, 30000.0);
 
->>>>>>> Stashed changes
 
 insert into comment (commentid,productid) values (1,1);
 insert into comment (commentid,productid) values (2,2);
@@ -30,3 +23,8 @@ insert into comment_post (comment_commentid,posts_postid) values (2,4);
 insert into comment_post (comment_commentid,posts_postid) values (3,5);
 insert into comment_post (comment_commentid,posts_postid) values (3,6);
 insert into comment_post (comment_commentid,posts_postid) values (3,7);
+
+INSERT INTO user_account (accountid, is_active, balance) VALUES ('1', true,'0.0');
+INSERT INTO user_address (addressid, billingaddress, mailboxno, mobilenumber, phonenumber, state, street, zipcode) VALUES ('1', '', '', '', '', '', '', '');
+INSERT INTO users (username, is_active, firstName, lastName, middleName,password,account_id, address_id) VALUES ('admin', true, '', '', '', 'pmWkWSBCL51Bfkhn79xPuKBKHz//H6B+mY6G9/eieuM=', '1', '1');
+
