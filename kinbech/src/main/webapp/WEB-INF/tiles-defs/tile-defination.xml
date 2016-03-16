@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" ?>
- 
-<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
-
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
-	<definition name="defaultTemplate" template="/WEB-INF/template/layout.jsp">
-		<put-attribute name="header"
-			value="/WEB-INF/template/defaultHeader.jsp" />
-		<put-attribute name="navigation_bar"
-			value="/WEB-INF/jsp/navigation_bar/default_navigation_bar.jsp" />
-		<put-attribute name="content"
-			value="/WEB-INF/template/defaultContent.jsp" />
-		<put-attribute name="footer"
-			value="/WEB-INF/template/defaultFooter.jsp" />
+	<definition name="base.definition" template="/WEB-INF/views/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp" />
+		<put-attribute name="navigation" value="/WEB-INF/views/navigation.jsp" />
+		<put-attribute name="category" value="/WEB-INF/views/category.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
 	</definition>
-	<definition name="UserAdd" extends="defaultTemplate">
-		<put-attribute name="content" value="/WEB-INF/views/UserAdd.jsp" />
+
+	<definition name="home" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/views/home.jsp" />
+	</definition>
+	<definition name="UserAdd" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/views/UserAdd.jsp" />
+	</definition>
+	<definition name="UserList" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/views/UserList.jsp" />
 	</definition>
 </tiles-definitions>
