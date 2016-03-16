@@ -1,7 +1,4 @@
- 
-INSERT INTO credentials(username,password,is_active) VALUES ('admin','pmWkWSBCL51Bfkhn79xPuKBKHz//H6B+mY6G9/eieuM=',TRUE);
 
-#comment table
 insert into comment (commentid,productid) values (1,1);
 insert into comment (commentid,productid) values (2,2);
 insert into comment (commentid,productid) values (3,3);

@@ -15,8 +15,11 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.context.annotation.Scope;
 
 @Entity
@@ -27,6 +30,10 @@ public class User implements Serializable {
 	private String password;
 	private Account account;
 	private Address address;
+	private String firstName;
+	private String middleName;
+	private String lastName;
+	private boolean isActive=true;
 	
 	public User() {
 		this.account=new Account();
@@ -35,6 +42,8 @@ public class User implements Serializable {
 	}
 	@Id
 	@Column(name="username")
+	@NotEmpty(message="UserName cannot be Empty")
+	@Email(message="Invalid Email Address")
 	public String getUserName() {
 		return userName;
 	}
@@ -64,7 +73,31 @@ public class User implements Serializable {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
-
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getMiddleName() {
+		return middleName;
+	}
+	public void setMiddleName(String middleName) {
+		this.middleName = middleName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	@Column(name="is_active")
+	public boolean isActive() {
+		return isActive;
+	}
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
 	
 	
 

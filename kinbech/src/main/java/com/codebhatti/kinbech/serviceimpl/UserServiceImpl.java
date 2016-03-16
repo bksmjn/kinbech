@@ -34,14 +34,12 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User findByUserName(String userName) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.userRepository.findOne(userName);
 	}
 
 	@Override
 	public List<User> findAllUser() {
-		// TODO Auto-generated method stub
-		return null;
+		return (List<User>)this.userRepository.findAll();
 	}
 
 	public UserRepository getUserRepository() {
