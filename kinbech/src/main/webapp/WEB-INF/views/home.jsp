@@ -9,7 +9,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>KinBech(Buy-Sell)</title>
-<link rel="stylesheet" type="text/css" href="<spring:url value="/css/main.css"/>"/>
+<link rel="stylesheet" type="text/css"
+	href="<spring:url value="/css/main.css"/>" />
 </head>
 <body>
 	<div id="header">
@@ -67,12 +68,7 @@
 		</div>
 
 
-
-
-
-
 		<div id="productsectionheader">Apparel</div>
-
 		<div id="productbox">Jeans</div>
 		<div id="productbox">Hat</div>
 		<div id="productbox">Scarf</div>

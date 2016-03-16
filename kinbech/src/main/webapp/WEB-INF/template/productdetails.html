@@ -459,9 +459,33 @@
 </div>
 
 
+	<div id="comments">
+	<hr/>
+	<span id="commentlabel"><Strong>Comments</strong></span>
+	<div id="commentcontainer">
+	<div class="commentbox">
+		<strong class="italicized">Ram Kumar Says:</strong><br/>
+		<span class="commenttext">This is the shittiest product ive ever seen</span>
+	
+	</div>
+	</div>
+	</div>
+
+
+
+</div>
+
+
 <div id="footer">
 This is the footer
 </div>
+
+<script>
+	function addcomment(message,username){
+		var comment="<div class='commentbox'><strong class='italicized'>"+username+" Says:</strong><br/><span class='commenttext'>"+message+"</span></div>";
+		document.getElementById("commentcontainer").innerHTML+=comment;	
+	}
+</script>
 
 
 

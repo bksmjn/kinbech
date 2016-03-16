@@ -11,14 +11,26 @@
 <title>View Cart</title>
 </head>
 <body>
+	<div id="productsectionheader">
+	Cart:
+	</div>
 	<c:forEach items="${myCart.cartItems}" var="item">
-		<p>Item : ${item.value.productId} 
-		   <br />
-			Quantity : ${item.value.quantity}
-		</p>
+		<div id="productbox">
+		<div class="productimage">
+		<img width="200px" height="200px" src=""/>
+		</div>
+		<div class="productinfo">
+		<div class="producttitle">${item.value.productId}</div>
+	
+		<div class="productdetails">
+		Quantity:${item.value.quantity}
+		</div>
+		</div>
+	</div>
 	</c:forEach>
+	
 	<form action='<spring:url value="/Order/Checkout"></spring:url>' method="POST">
-		<input type="Submit" value="Checkout" />
+		<input type="Submit" class="buybutton,checkoutbutton" value="Checkout" />
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 	</form>
 </body>
