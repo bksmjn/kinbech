@@ -67,4 +67,8 @@ public class ProductCopy {
 		this.buyer = buyer;
 	}
 
+	public String printAsString() {
+		return "ProductCopy [id=" + id + ", product=" + product + ", productStatus=" + productStatus + ", buyer="
+				+ buyer + "]";
+	}
 }

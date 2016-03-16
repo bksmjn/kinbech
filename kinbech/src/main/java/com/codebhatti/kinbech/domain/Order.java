@@ -6,16 +6,16 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ORDER")
+@Table(name = "ORDERKINBECH")
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,15 +24,15 @@ public class Order {
 
 	@Column(name = "BUYER")
 	@JoinColumn(name = "username")
-	private User buyer;
+	private String buyer;
 
 	@Column(name = "SELLER")
 	@JoinColumn(name = "username")
-	private User seller;
+	private String seller;
 
 	@Column(name = "PRODUCT_COPY")
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "PRODUCTCOPY_ID")
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable
 	private List<ProductCopy> productCopy;
 
 	@Column(name = "QUANTITY")
@@ -53,19 +53,19 @@ public class Order {
 		this.id = id;
 	}
 
-	public User getBuyer() {
+	public String getBuyer() {
 		return buyer;
 	}
 
-	public void setBuyer(User buyer) {
+	public void setBuyer(String buyer) {
 		this.buyer = buyer;
 	}
 
-	public User getSeller() {
+	public String getSeller() {
 		return seller;
 	}
 
-	public void setSeller(User seller) {
+	public void setSeller(String seller) {
 		this.seller = seller;
 	}
 

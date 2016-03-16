@@ -14,6 +14,7 @@ import com.codebhatti.kinbech.domain.CartItem;
 import com.codebhatti.kinbech.domain.Order;
 import com.codebhatti.kinbech.domain.ProductCopy;
 import com.codebhatti.kinbech.domain.User;
+import com.codebhatti.kinbech.enums.ProductStatus;
 import com.codebhatti.kinbech.exception.BusinessException;
 import com.codebhatti.kinbech.repository.OrderRepository;
 import com.codebhatti.kinbech.service.AccountService;
@@ -55,10 +56,10 @@ public class OrderServiceImpl implements OrderService {
 			
 			List<ProductCopy> productCopies = productCopyService.getProductCopiesFromProductId(cartItem.getProductId(), cartItem.getQuantity());
 			order.setProductCopy(productCopies);
-			order.setBuyer(user);
+			order.setBuyer(user.getUserName());
 			order.setQuantity(productCopies.size());
 			order.setAmount(productCopies.get(0).getProduct().getUnitPrice() * productCopies.size());
-			order.setSeller(userService.findByUserName(productCopies.get(0).getProduct().getSellerId()));
+			order.setSeller(userService.findByUserName(productCopies.get(0).getProduct().getSellerId()).getUserName());
 			
 			ordersList.add(order);
 		}
@@ -71,13 +72,23 @@ public class OrderServiceImpl implements OrderService {
 		List<Order> ordersList = createOrder(user, cart);
 		
 		for(Order order : ordersList) {
-			if (isOrderValid(user, order))
+			if (isOrderValid(user, order)) {
 				orderRepository.save(order);
-			else
+				User buyer = userService.findByUserName(order.getBuyer());
+				User seller = userService.findByUserName(order.getSeller());
+				accountService.deductBalance(buyer.getAccount(), order.getAmount());
+				accountService.addBalance(seller.getAccount(), order.getAmount());
+				
+				List<ProductCopy> productCopies = order.getProductCopy();
+				for(ProductCopy productCopy : productCopies) {
+					productCopy.setProductStatus(ProductStatus.SOLD.name());
+					productCopyService.updateProductAsSold(productCopy);
+				}
+				cart.initialize();
+			} else {
 				throw new BusinessException("Order details is not valid");
+			}
 		}
-		
-		cart.initialize();
 		return true;
 	}
 

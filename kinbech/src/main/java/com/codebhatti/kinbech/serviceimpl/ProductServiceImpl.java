@@ -31,7 +31,7 @@ public class ProductServiceImpl implements ProductService {
 			for (int i = 0; i < product.getQuantityWhenUpload(); i++) {
 				ProductCopy newCopy = new ProductCopy();
 				newCopy.setProduct(product);
-
+				System.out.println(newCopy.printAsString());
 				newProductCopies.add(newCopy);
 			}
 		}

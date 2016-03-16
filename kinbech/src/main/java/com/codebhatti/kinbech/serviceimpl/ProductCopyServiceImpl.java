@@ -52,4 +52,9 @@ public class ProductCopyServiceImpl implements ProductCopyService {
 		else
 			throw new BusinessException("Insufficient stock in store.");
 	}
+
+	@Override
+	public ProductCopy updateProductAsSold(ProductCopy productCopy) {
+		return productCopyRepository.save(productCopy);
+	}
 }

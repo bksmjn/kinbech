@@ -11,4 +11,5 @@ public interface ProductCopyService {
 	public Integer getTotalAvailableQuantity(Product product);
 	public List<ProductCopy> getProductCopiesFromProductId(Long productId, Integer quantity)
 					throws BusinessException;
+	public ProductCopy updateProductAsSold(ProductCopy productCopy);
 }
