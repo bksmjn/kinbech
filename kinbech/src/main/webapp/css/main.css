@@ -150,10 +150,10 @@ table td {
 		
 		margin:10px 2px;
 		background-color:white;
-		color:black;
+		color:green;
 	}
 	#categoryitem:hover{
-		background-color:black;
+		background-color:green;
 		color:white;
 		
 			
@@ -162,7 +162,7 @@ table td {
 		text-decoration:none;
 	}
 	#categoryheader{
-		background-color:black;
+		background-color:green;
 		color:white;
 		height:30px;
 		text-align:center;
@@ -182,7 +182,7 @@ table td {
 	#navlinks>a{
 		
 		text-decoration:none;
-		background-color:black;
+		background-color:green;
 		color:white;
 		float:right;
 		margin-left:2px;
@@ -195,12 +195,12 @@ table td {
 		text-decoration:none;
 		float:right;
 		background-color:white;
-		color:black;
+		color:green;
 		
 	}
 	
 	#productsectionheader{
-		background-color:black;
+		background-color:green;
 		color:white;
 		font-size:20px;
 		padding:10px;
@@ -236,7 +236,7 @@ table td {
 	.buybutton>a{
 		text-decoration:none;
 		float:left;
-		background-color:black;
+		background-color:green;
 		color:white;
 		padding:10px;
 		border-width:1px;
@@ -248,7 +248,7 @@ table td {
 		text-decoration:none;
 		float:left;
 		background-color:white;
-		color:black;
+		color:green;
 		padding:10px;
 		border-width:1px;
 		border-style:solid;
