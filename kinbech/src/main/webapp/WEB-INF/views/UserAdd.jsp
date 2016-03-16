@@ -23,61 +23,27 @@
 				<label for="userName">User Name:</label>
 				<form:input path="userName" id="userName" />
 				<br> <label for="password">Password:</label>
-				<form:input path="password" id="password" />
+				<form:password path="password" id="password" />
 				<br> <label for="confirmpassword">Confirm Password:</label><input
-					type="password" id="confirmpassword"> <br>
-			</fieldset>
-
-		</form:form>
-	</div>
-
-	<div id="global">
-		<form:form modelAttribute="address" method="POST" action="addAddress">
-			<fieldset>
-				<legend> Add Address</legend>
-				<label for="street">Street: </label>
-				<form:input path="street" id="street" />
+					type="password" id="confirmpassword"> <br> <label
+					for="street">Street: </label>
+				<form:input path="address.street" id="street" />
 				<br> <label for="zipCode">Zip Code:</label>
-				<form:input path="zipCode" id="zipCode" />
+				<form:input path="address.zipCode" id="zipCode" />
 				<br> <label for="state">State:</label>
-				<form:input path="state" id="state" />
+				<form:input path="address.state" id="state" />
 				<br> <label for="mailBoxNumber">Mail Box No:</label>
-				<form:input path="mailBoxNumber" id="mailBoxNumber" />
+				<form:input path="address.mailBoxNumber" id="mailBoxNumber" />
 				<br> <label for="phoneNumber">Phone Number:</label>
-				<form:input path="phoneNumber" id="phoneNumber" />
+				<form:input path="address.phoneNumber" id="phoneNumber" />
 				<br> <label for="mobileNumber">Mobile Number:</label>
-				<form:input path="mobileNumber" id="mobileNumber" />
+				<form:input path="address.mobileNumber" id="mobileNumber" />
 				<br> <label for="billingAddress">Billing Address:</label>
-				<form:input path="billingAddress" id="billingAddress" />
-				<input type="submit" value="Add Address">
+				<form:input path="address.billingAddress" id="billingAddress" />
+				<input type="submit" />
 			</fieldset>
 
 		</form:form>
-	</div>
-	<div id="global">
-		<h1>Address List</h1>
-		<table>
-			<tr style="width: 100%;">
-				<th style="width: 19%;">Street</th>
-				<th style="width: 21%;">Mobile Number</th>
-				<th style="width: 21%;">Zip Code</th>
-				<th style="width: 21%;">State</th>
-				<th style="width: 23%;">Billing Address</th>
-			</tr>
-			<c:forEach items="${user.addresses}" var="address">
-				<tr>
-					<td>${address.street}</td>
-					<td>${address.mobileNumber}</td>
-					<td>${address.zipCode}</td>
-					<td>${address.state}</td>
-					<td>${address.billingAddress}</td>
-				</tr>
-			</c:forEach>
-		</table>
-
-		<input type="button" value="Add Category"
-			onclick="make_visible('formInput');return false;">
-
 	</div>
 
 </body>

@@ -24,10 +24,9 @@ public class Address implements Serializable{
 	private String phoneNumber;
 	private String mobileNumber;
 	private String billingAddress;
-	private User user;
 	
 	public Address(){
-		this.user=new User();
+	
 	}
 
 	
@@ -91,16 +90,7 @@ public class Address implements Serializable{
 	public void setBillingAddress(String billingAddress) {
 		this.billingAddress = billingAddress;
 	}
-	@ManyToOne
-	public User getUser() {
-		return user;
-	}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	
 	
 	
 	

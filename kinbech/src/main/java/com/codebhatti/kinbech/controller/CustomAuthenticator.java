@@ -14,12 +14,15 @@ import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.digest.DigestUtils;
 
 import com.codebhatti.kinbech.domain.Credential;
+import com.codebhatti.kinbech.domain.Identity;
 import com.codebhatti.kinbech.service.CredentialService;
 
 public class CustomAuthenticator implements AuthenticationProvider {
 
 	@Autowired
 	private CredentialService credentialService;
+	@Autowired
+	private Identity identity;
 
 	public CustomAuthenticator() {
 		System.out.println("inside CustomAuthenticator");
@@ -32,15 +35,12 @@ public class CustomAuthenticator implements AuthenticationProvider {
 		if (c == null) {
 			return null;
 		} else {
-			//if (hashedPassword.equals(c.getPassword())) {
+				identity.setUserName(c.getUserName());
 				List<GrantedAuthority> grantedAuth = new ArrayList<GrantedAuthority>();
 				grantedAuth.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
 				Authentication auth = new UsernamePasswordAuthenticationToken(a.getName(),
 						a.getCredentials().toString(), grantedAuth);
 				return auth;
-
-			//}
-			//return null;
 		}
 	}
 
@@ -48,5 +48,15 @@ public class CustomAuthenticator implements AuthenticationProvider {
 	public boolean supports(Class<?> type) {
 		return type.equals(UsernamePasswordAuthenticationToken.class);
 	}
+
+	public Identity getIdentity() {
+		return identity;
+	}
+
+	public void setIdentity(Identity identity) {
+		this.identity = identity;
+	}
+
+	
 
 }

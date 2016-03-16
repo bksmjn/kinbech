@@ -52,7 +52,7 @@
 			username-parameter="username" 
 			password-parameter="password"
 			login-processing-url="/DoLogin"
-			/>
+			 authentication-failure-url="/loginfailed"/>
 		<!-- login-page="/login" -->
 		<!-- login-processing-url="/postLogin" -->
 		<!-- username-parameter="username" -->
@@ -82,6 +82,7 @@
 	<!-- </security:authentication-manager> -->
 
 	<bean id="customAuth" class="com.codebhatti.kinbech.controller.CustomAuthenticator"></bean>
+	<bean id="identity" class="com.codebhatti.kinbech.domain.Identity" />
 
 	<security:authentication-manager>
 		<security:authentication-provider ref="customAuth">

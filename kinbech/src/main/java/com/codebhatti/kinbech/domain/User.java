@@ -17,6 +17,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
+import org.springframework.context.annotation.Scope;
 
 @Entity
 @Table(name="users")
@@ -25,11 +26,11 @@ public class User implements Serializable {
 	private String userName;
 	private String password;
 	private Account account;
-	private List<Address> addresses;
+	private Address address;
 	
 	public User() {
 		this.account=new Account();
-		this.addresses=new ArrayList<Address>();
+		this.address=new Address();
 	
 	}
 	@Id
@@ -55,13 +56,15 @@ public class User implements Serializable {
 	public void setAccount(Account account) {
 		this.account = account;
 	}
-	@OneToMany(mappedBy="user",cascade=CascadeType.ALL)
-	public List<Address> getAddresses() {
-		return addresses;
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="address_id")
+	public Address getAddress() {
+		return address;
 	}
-	public void setAddresses(List<Address> addresses) {
-		this.addresses = addresses;
+	public void setAddress(Address address) {
+		this.address = address;
 	}
+
 	
 	
 
