@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.codebhatti.kinbech.domain.Product;
 import com.codebhatti.kinbech.domain.User;
 import com.codebhatti.kinbech.service.CategoryService;
+import com.codebhatti.kinbech.service.CommentService;
 import com.codebhatti.kinbech.service.ProductService;
 import com.codebhatti.kinbech.service.UserService;
 
@@ -34,6 +35,9 @@ public class ProductController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private CommentService commentService;
 	
 	public ProductController(){
 		System.out.println("Inside Product Controller");
@@ -64,11 +68,15 @@ public class ProductController {
 			
 			Product prod = productService.findByProductId(productId);
 			model.addAttribute("product", prod);
+			model.addAttribute("comment",commentService.get(productId));
+			System.out.println(commentService.get(productId));
 			System.out.println(prod.getProductCopyList());
 		} else {
 			Object prodObj=request.getSession().getAttribute("product");
 			request.getSession().removeAttribute("product");
 			model.addAttribute("product", prodObj);
+			model.addAttribute("comment",commentService.get(productId));
+			System.out.println(commentService.get(productId));
 		}
 		return "ProductDetail";
 	}

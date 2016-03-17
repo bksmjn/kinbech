@@ -39,9 +39,8 @@
 	<div id="comments">
 		<hr />
 		<span id="commentlabel"><Strong>Comments</strong></span>
+		
 		<div id="commentcontainer">
-			commentId : ${comment.commentId} <br /> productId :
-			${comment.productId} <br />
 			<c:forEach items="${comment.posts}" var="post">
 				<div class="commentbox">
 					<strong class="italicized">${post.username} Says:</strong><br /> <span

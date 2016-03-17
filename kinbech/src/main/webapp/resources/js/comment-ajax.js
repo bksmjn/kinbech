@@ -30,10 +30,9 @@ function postSubmit(){
 		dataType: "json",           // Accepts
  		data:JSON.stringify(post),
  		contentType: 'application/json',   // Sends
-		success: function(){
-			$('#errors').html("");
- 			$("#result").append( '<H3 align="center"> OKAY!! <H3>');                
-	 	    $('#result').show();
+		success: function(messageObject){
+			console.log(messageObject);
+			addcomment(postmessage,messageObject.username);
 		},
  
 		error: function(errorObject ){	

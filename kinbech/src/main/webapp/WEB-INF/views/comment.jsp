@@ -32,7 +32,7 @@
                
 	
 		<!--  new comment -->
-		add new comment : <br/>
+		<!-- add new comment : <br/> -->
 		                   
             <form id="postid">
             <input id="username" type="hidden" name="username" value="${username} "></input>
