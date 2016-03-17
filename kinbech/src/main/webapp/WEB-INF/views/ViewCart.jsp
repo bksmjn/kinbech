@@ -9,16 +9,16 @@
 	<div id="productsectionheader">
 	Cart:
 	</div>
-	<c:forEach items="${myCart.cartItems}" var="item">
+	<c:forEach items="${cartItemsList}" var="item">
 		<div id="productbox">
 		<div class="productimage">
 		<img width="200px" height="200px" src=""/>
 		</div>
 		<div class="productinfo">
-		<div class="producttitle">${item.value.productId}</div>
+		<div class="producttitle">${item.product.title}</div>
 	
 		<div class="productdetails">
-		Quantity:${item.value.quantity}
+		Quantity:${item.quantity}
 		</div>
 		</div>
 	</div>

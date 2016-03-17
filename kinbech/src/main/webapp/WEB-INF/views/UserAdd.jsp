@@ -6,9 +6,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <div id="body">
-	<div id="global">
+	<div id="productsectionheader">
+	USER REGISTRATION:
+	</div>
+
 		<form:form modelAttribute="user" method="POST" action="add">
-			<fieldset>
+			<fieldset id="productaddbox">
 				<legend>User Add</legend>
 				<form:errors path="*" />
 				<label for="firstName">First Name:</label>
@@ -51,5 +54,5 @@
 			</fieldset>
 
 		</form:form>
-	</div>
+
 </div>

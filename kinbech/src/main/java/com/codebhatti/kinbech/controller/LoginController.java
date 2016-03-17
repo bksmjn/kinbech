@@ -26,6 +26,10 @@ public class LoginController {
 	
 	@RequestMapping(value="/doLogout", method=RequestMethod.GET)
 	public String doLogout(){
-		return "login";
+		return "redirect:/login";
+	}
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	public String logout(){
+		return "redirect:/login";
 	}
 }

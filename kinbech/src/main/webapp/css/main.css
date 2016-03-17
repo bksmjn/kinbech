@@ -47,7 +47,7 @@
 	#productbox{
 		border-style:solid;
 		width:95%;
-		
+			
 		margin-top:10px;
 		margin-bottom:10px;
 		margin-left:10px;
@@ -206,7 +206,7 @@
 	}
 	.productinfo{
 		float:left;
-		margin-left:10px;	
+		margin-left:10px;
 	}
 	.buybutton{
 		text-decoration:none;

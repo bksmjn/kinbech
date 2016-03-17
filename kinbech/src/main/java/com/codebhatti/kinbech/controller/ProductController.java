@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.codebhatti.kinbech.domain.Product;
 import com.codebhatti.kinbech.domain.User;
 import com.codebhatti.kinbech.service.CategoryService;
@@ -45,18 +45,31 @@ public class ProductController {
 //		webDataBinder.setDisallowedFields("categoryId");
 //	}
 	
+	@RequestMapping(value={"","/"}, method=RequestMethod.GET)
+	public String getAllProducts(Model model){
+		model.addAttribute("products",productService.getAllProducts());
+		return "ProductList";
+	}
+	
 	@RequestMapping(value={"/{category}"}, method=RequestMethod.GET)
 	public String getListProducts(@PathVariable("category") String category, Model model) {
 		return "home";
 	}
 	
 	@RequestMapping(value="/ProductDetail", method=RequestMethod.GET) 
-	public String getProductDetailPage(Product product,HttpServletRequest request,
+	public String getProductDetailPage(@RequestParam("productId")Long productId,HttpServletRequest request,
 			Model model) {
-		Object prodObj=request.getSession().getAttribute("product");
-		request.getSession().removeAttribute("product");
-		model.addAttribute("product", prodObj);
-		System.out.println("getProductDetailPage()");
+		System.out.println("productId="+productId);
+		if(productId!=null) {
+			
+			Product prod = productService.findByProductId(productId);
+			model.addAttribute("product", prod);
+			System.out.println(prod.getProductCopyList());
+		} else {
+			Object prodObj=request.getSession().getAttribute("product");
+			request.getSession().removeAttribute("product");
+			model.addAttribute("product", prodObj);
+		}
 		return "ProductDetail";
 	}
 	
@@ -81,6 +94,6 @@ public class ProductController {
 		//redirectAttributes.addAttribute("productId", savedProduct.getProductId()+"");
 		System.out.println("savedProduct="+savedProduct.getProductAsString());
 		//return "ProductDetail";
-		return "redirect:/products/ProductDetail";
+		return "redirect:/products/ProductDetail?productId="+savedProduct.getProductId();
 	}
 }

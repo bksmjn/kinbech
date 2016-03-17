@@ -4,14 +4,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <div id="body">
-	<div id="global">
-		<fieldset>
+	<div id="productsectionheader">
+	USER LIST:
+	</div>
+		<fieldset id="productaddbox">
 		<legend>User List</legend>
 		<!-- Query Parameter passing  -->
 		<spring:url value="/users/add" var="addUser_url">
 		</spring:url>
 		<a href="${addUser_url}">Add User</a><br />
-		<table>
+		<table style="width: 100%;">
 			<tr style="width: 100%;">
 				<th style="width: 19%;">UserName</th>
 				<th style="width: 21%;">PhoneNumber</th>
@@ -29,5 +31,5 @@
 				</tr>
 			</c:forEach>
 		</table></fieldset>
-	</div>
+
 </div>

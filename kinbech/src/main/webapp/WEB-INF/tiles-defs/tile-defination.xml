@@ -9,7 +9,7 @@
 		<put-attribute name="category" value="/WEB-INF/views/category.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
-		
+
 	</definition>
 
 	<definition name="home" extends="base.definition">
@@ -24,16 +24,20 @@
 	<definition name="UserList" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/views/UserList.jsp" />
 	</definition>
-	
+
 	<definition name="ProductDetail" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/views/ProductDetail.jsp" />
 	</definition>
-	
-		<definition name="ViewCart" extends="base.definition">
+
+	<definition name="ViewCart" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/views/ViewCart.jsp" />
 	</definition>
 	<definition name="Checkout" extends="base.definition">
 		<put-attribute name="body" value="/WEB-INF/views/Checkout.jsp" />
 	</definition>
-	
+
+	<definition name="ProductList" extends="base.definition">
+		<put-attribute name="body" value="/WEB-INF/views/ProductList.jsp" />
+	</definition>
+
 </tiles-definitions>

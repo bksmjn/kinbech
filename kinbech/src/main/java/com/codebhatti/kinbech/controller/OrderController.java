@@ -13,6 +13,7 @@ import com.codebhatti.kinbech.domain.User;
 import com.codebhatti.kinbech.exception.BusinessException;
 import com.codebhatti.kinbech.service.OrderService;
 import com.codebhatti.kinbech.service.ProductCopyService;
+import com.codebhatti.kinbech.service.ProductService;
 import com.codebhatti.kinbech.service.UserService;
 
 @Controller
@@ -28,10 +29,14 @@ public class OrderController {
 	private ProductCopyService productCopyService;
 	
 	@Autowired
+	private ProductService productService;
+	
+	@Autowired
 	private Cart cart;
 	
 	@RequestMapping(value="/Checkout", method=RequestMethod.GET)
 	public String getProcessOrder() {
+		
 		return "Checkout";
 	}
 	

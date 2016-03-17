@@ -69,7 +69,7 @@ public class Product {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date modifiedOn;
 	
-	@OneToMany(mappedBy="product", fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@OneToMany(mappedBy="product", fetch=FetchType.EAGER, cascade=CascadeType.ALL)
 	private List<ProductCopy> productCopyList;
 
 	public Product() {
