@@ -1,6 +1,5 @@
 package com.codebhatti.kinbech.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
 
@@ -10,12 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.codebhatti.kinbech.domain.Product;
@@ -53,9 +51,11 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/ProductDetail", method=RequestMethod.GET) 
-	public String getProductDetailPage(Product product,
+	public String getProductDetailPage(Product product,HttpServletRequest request,
 			Model model) {
-		
+		Object prodObj=request.getSession().getAttribute("product");
+		request.getSession().removeAttribute("product");
+		model.addAttribute("product", prodObj);
 		System.out.println("getProductDetailPage()");
 		return "ProductDetail";
 	}
@@ -76,10 +76,11 @@ public class ProductController {
 		User user = userService.findByUserName(principal.getName());
 		newProduct.setSellerId(user.getUserName());
 		Product savedProduct = productService.saveOrUpdate(newProduct);
-		model.addAttribute("product", savedProduct);
+		//model.addAttribute("product", savedProduct);
+		request.getSession().setAttribute("product", savedProduct);
 		//redirectAttributes.addAttribute("productId", savedProduct.getProductId()+"");
 		System.out.println("savedProduct="+savedProduct.getProductAsString());
-		return "ProductDetail";
-		//return "redirect:/products/ProductDetail";
+		//return "ProductDetail";
+		return "redirect:/products/ProductDetail";
 	}
 }
