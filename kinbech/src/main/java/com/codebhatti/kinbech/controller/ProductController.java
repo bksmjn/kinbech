@@ -53,8 +53,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping(value="/ProductDetail", method=RequestMethod.GET) 
-	public String getProductDetailPage(@ModelAttribute("productdetail")Product product,
+	public String getProductDetailPage(Product product,
 			Model model) {
+		
 		System.out.println("getProductDetailPage()");
 		return "ProductDetail";
 	}
@@ -68,15 +69,17 @@ public class ProductController {
 	
 	@RequestMapping(value="/Add", method=RequestMethod.POST)
 	public String postAddProductPage(@ModelAttribute("product") Product newProduct,
-			BindingResult bindingResult, RedirectAttributes redirectAttributes, Principal principal, HttpServletRequest request) throws IllegalStateException, IOException {
+			BindingResult bindingResult, RedirectAttributes redirectAttributes, Principal principal,
+			Model model, HttpServletRequest request) throws IllegalStateException, IOException {
 		String root=request.getServletContext().getRealPath("/");
-		newProduct.getImageFile().transferTo(new File(root+"resources\\images\\"+newProduct.getProductId()+".png"));
 		System.out.println("postAddProductPage="+newProduct.getProductAsString());
 		User user = userService.findByUserName(principal.getName());
 		newProduct.setSellerId(user.getUserName());
 		Product savedProduct = productService.saveOrUpdate(newProduct);
-		redirectAttributes.addFlashAttribute("product", savedProduct);
+		model.addAttribute("product", savedProduct);
+		//redirectAttributes.addAttribute("productId", savedProduct.getProductId()+"");
 		System.out.println("savedProduct="+savedProduct.getProductAsString());
-		return "redirect:/products/ProductDetail";
+		return "ProductDetail";
+		//return "redirect:/products/ProductDetail";
 	}
 }

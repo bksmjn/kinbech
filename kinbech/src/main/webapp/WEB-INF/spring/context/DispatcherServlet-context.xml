@@ -57,6 +57,7 @@
 
 	<mvc:resources location="/resources/" mapping="/resource/**" />
 	<mvc:resources mapping="/css/**" location="/css/" />
+	<mvc:resources location="/products/images/" mapping="/Images/**" />
 
 
 	<bean id="multipartResolver"

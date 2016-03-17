@@ -27,11 +27,11 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Entity
 @Table(name = "product")
-public class Product implements Serializable{
+public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "productid")
-	Long productId;
+	private Long productId;
 
 	@Column(name="sellerid")
 	String sellerId;
@@ -45,7 +45,6 @@ public class Product implements Serializable{
 	@Transient
 	MultipartFile imageFile;
 	
-	@Transient
 	@Column(name="imagepath")
 	String imagePath;
 	

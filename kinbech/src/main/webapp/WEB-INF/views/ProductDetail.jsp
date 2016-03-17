@@ -14,7 +14,8 @@
 	<div id="productsectionheader">Description:</div>
 	<br />
 	<div class="productimage">
-		<img width="200px" height="200px" src="" />
+		<c:set var="imgurl" value="/kinbech/Images/product_" />
+		<img width="200px" height="200px" src="${imgurl}${product.productId}.jpg" />
 	</div>
 	<div id="productdescription">
 		<strong>Name :</strong> <span class="italicized">${product.title}</span>

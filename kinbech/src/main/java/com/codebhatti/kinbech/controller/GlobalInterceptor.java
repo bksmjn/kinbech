@@ -15,43 +15,35 @@ import com.codebhatti.kinbech.exception.BusinessException;
 
 @ControllerAdvice
 public class GlobalInterceptor {
-	
-	//@Autowired
-	///Identity identity;
-	
-	
+
+	// @Autowired
+	/// Identity identity;
+
 	@InitBinder
 	public void initBinder(WebDataBinder binders) {
-		
-	//	model.addAttribute("username", identity==null?"":identity.getUserName());
-		
+
+		// model.addAttribute("username",
+		// identity==null?"":identity.getUserName());
+
 	}
-	
-	@ExceptionHandler(value=BusinessException.class)
-	public ModelAndView handleException(
-			HttpServletRequest servletRequest
-			,BusinessException businessException
-			){
-		
+
+	@ExceptionHandler(value = BusinessException.class)
+	public ModelAndView handleException(HttpServletRequest servletRequest, BusinessException businessException) {
+		businessException.printStackTrace();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("ErrorPage");
 		modelAndView.addObject("errorMessage", businessException.getErrorMessage());
-		
+
 		return modelAndView;
-		
 	}
-	
-	/*@ExceptionHandler(value=RuntimeException.class)
-	public ModelAndView handleRuntimeException(
-			HttpServletRequest servletRequest
-			,RuntimeException businessException
-			){
-		
+
+	@ExceptionHandler(value = RuntimeException.class)
+	public ModelAndView handleRuntimeException(HttpServletRequest servletRequest, RuntimeException runtimeException) {
+		runtimeException.printStackTrace();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("ErrorPage");
 		modelAndView.addObject("errorMessage", "OOPS!! please take a nap and come again!!");
-		
+
 		return modelAndView;
-		
-	}*/
+	}
 }

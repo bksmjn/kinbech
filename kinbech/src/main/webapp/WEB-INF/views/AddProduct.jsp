@@ -26,7 +26,11 @@
 		<br/>
 		<br/>
 		Product Quantity:
-		<form:input type="text" path="quantityWhenUpload" name="quantity"/><br/><br/>
+		<form:input type="text" path="quantityWhenUpload" name="quantity"/>
+		<br /><br />
+		Unit Price:
+		<form:input path="unitPrice" />
+		<br/><br/>
 		Upload An Image<br/><form:input path="imageFile" type="file" name="image" /><br/><br/>
 	    <input type="submit" value="Submit">
 	  </fieldset>

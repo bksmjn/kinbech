@@ -1,5 +1,6 @@
 package com.codebhatti.kinbech.serviceimpl;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,7 +48,9 @@ public class ProductServiceImpl implements ProductService {
 		product.setProductCopyList(newProductCopies);
 		Product savedProduct = productRepository.save(product);
 		//productCopyService.addProductCopies(savedProduct);
-		saveImage(product.getImageFile(), savedProduct.getProductId());
+		String imagePath = saveImage(product.getImageFile(), savedProduct.getProductId());
+		savedProduct.setImagePath(imagePath);
+		savedProduct=productRepository.save(product);
 		return savedProduct;
 	}
 
@@ -66,14 +69,15 @@ public class ProductServiceImpl implements ProductService {
 		return (List<Product>) productRepository.findAll();
 	}
 	
-	private void saveImage(MultipartFile imageFile, Long productId) throws IllegalStateException, IOException {
+	private String saveImage(MultipartFile imageFile, Long productId) throws IllegalStateException, IOException {
 		String rootDir = servletContext.getRealPath("/")+"products"+File.separator+"images";
 		File dir=new File(rootDir);
 		if(!dir.exists())
 			dir.mkdirs();
 		String ext = imageFile.getOriginalFilename().substring(imageFile.getOriginalFilename().length()-3);
 		File imgFile = new File(dir.getAbsolutePath()+File.separator+"product_"+productId+"."+ext);
+		System.out.println(imgFile.getAbsolutePath());
 		imageFile.transferTo(imgFile);
-		
+		return imgFile.getAbsolutePath();
 	}
 }
