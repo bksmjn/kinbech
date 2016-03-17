@@ -15,13 +15,13 @@
 	ADD A NEW PRODUCT:
 	</div>
 	<br/><br/>
-	<form action="action_page.php" enctype="multipart/form-data">
+	<form:form commandName="product" enctype="multipart/form-data" action="Add" method="POST">
 	  <fieldset id="productaddbox">
 	    <legend>Product iNFO:</legend>
 	   	Product Title:<br>
-	    <input type="text" name="productname" ><br><br/>
+	    <form:input type="text" path="title" /><br><br/>
 	    Product Description:<br>
-	    <textarea name="productdescription" cols="100px" rows="20px"></textarea><br><br>
+	    <form:textarea name="productdescription" path="description" cols="100px" rows="20px" /><br><br>
 	<br/><br/>
 		Product Category:<br/>
 		<select name="category">
@@ -31,11 +31,11 @@
 		<br/>
 		<br/>
 		Product Quantity:
-		<input type="text" name="quantity"/><br/><br/>
-		Upload An Image<br/><input type="file" name="image"><br/><br/>
+		<form:input type="text" path="quantityWhenUpload" name="quantity"/><br/><br/>
+		Upload An Image<br/><form:input path="imageFile" type="file" name="image" /><br/><br/>
 	    <input type="submit" value="Submit">
 	  </fieldset>
-	</form>
+	</form:form>
 	
 </body>
 </html>

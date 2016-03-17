@@ -1,5 +1,6 @@
 package com.codebhatti.kinbech.domain;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,7 +27,7 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Entity
 @Table(name = "product")
-public class Product {
+public class Product implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "productid")

@@ -13,7 +13,6 @@
 				<form:errors path="*" />
 				<label for="firstName">First Name:</label>
 				<form:input path="firstName" id="firstName" />
-				<br>
 				<form:errors path="firstName" />
 				<br> <label for="middleName">Middle Name:</label>
 				<form:input path="middleName" id="middleName" />

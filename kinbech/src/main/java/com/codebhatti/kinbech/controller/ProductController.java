@@ -1,7 +1,10 @@
 package com.codebhatti.kinbech.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +27,7 @@ import com.codebhatti.kinbech.service.UserService;
 @Controller
 @RequestMapping("/products")
 public class ProductController {
+	
 	@Autowired
 	private ProductService productService;
 	
@@ -33,11 +37,15 @@ public class ProductController {
 	@Autowired
 	private UserService userService;
 	
-	@InitBinder
-	public void initBinders(WebDataBinder webDataBinder) {
-		webDataBinder.setDisallowedFields("id");
-		webDataBinder.setDisallowedFields("categoryId");
+	public ProductController(){
+		System.out.println("Inside Product Controller");
 	}
+	
+//	@InitBinder
+//	public void initBinders(WebDataBinder webDataBinder) {
+//		webDataBinder.setDisallowedFields("id");
+//		webDataBinder.setDisallowedFields("categoryId");
+//	}
 	
 	@RequestMapping(value={"/{category}"}, method=RequestMethod.GET)
 	public String getListProducts(@PathVariable("category") String category, Model model) {
@@ -51,16 +59,18 @@ public class ProductController {
 		return "ProductDetail";
 	}
 	
-	@RequestMapping(value={"/Add"}, method=RequestMethod.GET)
-	public String getAddProductPage(@ModelAttribute("newProduct")Product newProduct,
-			Model model) {
+	@RequestMapping(value="/Add", method=RequestMethod.GET)
+	public String getAddProductPage(Model model) {
+		model.addAttribute("product", new Product());
 		model.addAttribute("categories", categoryService.getAllCategories());
 		return "AddProduct";
 	}
 	
-	@RequestMapping(value="/add", method=RequestMethod.POST)
-	public String postAddProductPage(@ModelAttribute("newProduct")Product newProduct,
-			BindingResult bindingResult, RedirectAttributes redirectAttributes, Principal principal) throws IllegalStateException, IOException {
+	@RequestMapping(value="/Add", method=RequestMethod.POST)
+	public String postAddProductPage(@ModelAttribute("product") Product newProduct,
+			BindingResult bindingResult, RedirectAttributes redirectAttributes, Principal principal, HttpServletRequest request) throws IllegalStateException, IOException {
+		String root=request.getServletContext().getRealPath("/");
+		newProduct.getImageFile().transferTo(new File(root+"resources\\images\\"+newProduct.getProductId()+".png"));
 		System.out.println("postAddProductPage="+newProduct.getProductAsString());
 		User user = userService.findByUserName(principal.getName());
 		newProduct.setSellerId(user.getUserName());
