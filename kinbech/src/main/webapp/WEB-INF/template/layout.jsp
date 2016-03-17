@@ -4,29 +4,21 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="_csrf" content="${_csrf.token}" />
+<meta name="_csrf_header" content="${_csrf.headerName}" />
 <title><tiles:insertAttribute name="title" ignore="true" /></title>
 </head>
 <link rel="stylesheet" type="text/css" href="style/pagestyle.css">
 <body>
 
-	<div id="header">
-		<tiles:insertAttribute name="header" />
+	<div id="header"><tiles:insertAttribute name="header" /></div>
+	
+	<div id="navigation"><tiles:insertAttribute name="navigation" /></div>
+	
+	<div id="category"><tiles:insertAttribute name="category" /></div>
+	
+	<div id="body"><tiles:insertAttribute name="body" /></div>
 
-	</div>
-	<div id="navigation">
-		<tiles:insertAttribute name="navigation" />
-		>
-	</div>
-	<div id="category">
-		<tiles:insertAttribute name="category" />
-		<div id="body">
-			<tiles:insertAttribute name="body" />
-
-		</div>
-		<div id="footer">
-			<tiles:insertAttribute name="footer" />
-		</div>
-</body>
-
+	<div id="footer"><tiles:insertAttribute name="footer" /></div>
 </body>
 </html>

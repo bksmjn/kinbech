@@ -28,11 +28,16 @@
 					<p>Invalid Username/Password</p>
 					</c:if>
 			
-				<label for="userName">User Name:</label> <input type="text"
-					name="username" /> <br> <label for="password">Password:</label>
-				<input type="password" name="password" /> <br> <input
-					type="submit"  value="Login" /> <input type="hidden"
-					name="${_csrf.parameterName}" value="${_csrf.token}" />
+				<label style="width:50px;" for="userName">User Name:</label>
+				<br/>
+				 <input type="text"	name="username" /> 
+				 <br/> 
+				<label style="width:50px;" for="password">Password:</label>
+				<br/>
+				<input type="password" name="password" /> 
+				<br> 
+				<input	type="submit"  value="Login" /> 
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 			</fieldset>
 		</form>
 	</div>
