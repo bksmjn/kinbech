@@ -1,1 +1,12 @@
+com.codebhatti.kinbech
+com.codebhatti.kinbech.controller
+com.codebhatti.kinbech.domain
+com.codebhatti.kinbech.enums
+com.codebhatti.kinbech.exception
+com.codebhatti.kinbech.formatter
+com.codebhatti.kinbech.repository
 com.codebhatti.kinbech.service
+com.codebhatti.kinbech.serviceimpl
+com.codebhatti.kinbech.validation
+com.codebhatti.kinbech.validationimpl
+com.kinbech.comment
