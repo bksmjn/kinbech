@@ -25,11 +25,7 @@ public class CommentServiceImpl implements CommentService {
 		return commentRepository.getCommentByProductId(productId);
 	}
 
-	@Override
-	public void save(Comment comment) {
-		// TODO Auto-generated method stub
-
-	}
+	
 
 	@Override
 	public void put(Long CommentId, Post post) {

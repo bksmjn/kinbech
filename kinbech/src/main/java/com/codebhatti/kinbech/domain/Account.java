@@ -12,6 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+
+/**
+ * @author Tek Ale
+ *
+ */
 @Entity
 @Table(name="user_account")
 public class Account implements Serializable{

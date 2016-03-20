@@ -15,6 +15,7 @@ import com.codebhatti.kinbech.domain.Product;
 import com.codebhatti.kinbech.service.ImageService;
 import com.codebhatti.kinbech.service.ProductService;
 
+
 @Service
 @Transactional
 public class ImageServiceImpl implements ImageService {

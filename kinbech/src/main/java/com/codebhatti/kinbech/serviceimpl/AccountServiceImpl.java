@@ -8,6 +8,10 @@ import com.codebhatti.kinbech.domain.Account;
 import com.codebhatti.kinbech.repository.AccountRepository;
 import com.codebhatti.kinbech.service.AccountService;
 
+/**
+ * @author uoogle
+ *
+ */
 @Service
 @Transactional
 public class AccountServiceImpl implements AccountService {
