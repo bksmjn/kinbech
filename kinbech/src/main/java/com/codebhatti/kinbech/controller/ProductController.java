@@ -23,6 +23,10 @@ import com.codebhatti.kinbech.service.CommentService;
 import com.codebhatti.kinbech.service.ProductService;
 import com.codebhatti.kinbech.service.UserService;
 
+/**
+ * @author Tek Ale
+ *
+ */
 @Controller
 @RequestMapping("/products")
 public class ProductController {
@@ -60,6 +64,12 @@ public class ProductController {
 		return "home";
 	}
 	
+	/** display the user the Product Detail page
+	 * @param productId the id of the product whose detail is needed
+	 * @param request
+	 * @param model
+	 * @return the string representing the Product Detail view
+	 */
 	@RequestMapping(value="/ProductDetail", method=RequestMethod.GET) 
 	public String getProductDetailPage(@RequestParam("productId")Long productId,HttpServletRequest request,
 			Model model) {
@@ -88,6 +98,17 @@ public class ProductController {
 		return "AddProduct";
 	}
 	
+	/** Add a new product detail
+	 * @param newProduct bind form data to this field
+	 * @param bindingResult hold if there are any validation errors in the binding
+	 * @param redirectAttributes 
+	 * @param principal to get username from session
+	 * @param model
+	 * @param request 
+	 * @return string redirecting the user to Product Detail page
+	 * @throws IllegalStateException
+	 * @throws IOException
+	 */
 	@RequestMapping(value="/Add", method=RequestMethod.POST)
 	public String postAddProductPage(@ModelAttribute("product") Product newProduct,
 			BindingResult bindingResult, RedirectAttributes redirectAttributes, Principal principal,

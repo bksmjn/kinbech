@@ -20,6 +20,11 @@ import com.codebhatti.kinbech.domain.CartItem;
 import com.codebhatti.kinbech.domain.Product;
 import com.codebhatti.kinbech.service.ProductService;
 
+/**
+ *This controller is responsible for handling cart related requests
+ * @author uoogle
+ *
+ */
 @Controller
 public class CartController {
 	@Autowired
@@ -29,7 +34,12 @@ public class CartController {
 	
 	Map<Long, Product> products=new HashMap<>();
 	
+	/**
+	 * @param model Model used to pass cart items to JSP page
+	 * @return ViewCart Page
+	 */
 	@RequestMapping(value="/MyCart", method=RequestMethod.GET)
+	
 	public String getViewMyCart(Model model) {
 		List<CartDetails> cartItemsList=new ArrayList<>();
 		Map<Long, CartItem> items = cart.getCartItems();
@@ -46,6 +56,10 @@ public class CartController {
 		return "ViewCart";
 	}
 	
+	/**
+	 * @param cartItem CartItem obtained via POST
+	 * @return Redirection to MyCart Page
+	 */
 	@RequestMapping(value="/AddToCart", method=RequestMethod.POST)
 	public String postAddToCart(@ModelAttribute CartItem cartItem) {
 		System.out.println("/AddToCart : "+ cartItem.toString());
@@ -53,6 +67,10 @@ public class CartController {
 		return "redirect:/MyCart";
 	}
 	
+	/**
+	 * @param productId Id of the product that is to be removed
+	 * @return redirection to MyCart Page
+	 */
 	@RequestMapping(value="/RemoveFromCart", method=RequestMethod.POST)
 	public String postRemoveFromCart(@RequestParam("productId")Long productId) {
 		if(cart.containsCartItem(productId)) {

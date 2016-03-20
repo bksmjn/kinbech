@@ -14,6 +14,12 @@ import com.codebhatti.kinbech.domain.Identity;
 import com.codebhatti.kinbech.domain.Post;
 import com.codebhatti.kinbech.service.CommentService;
 
+/**
+ * This controller responsible for handling comment related requests via AJAX
+ * @author Parmeshwor Thapa
+ * 
+ *
+ */
 @Controller
 @RequestMapping(value = "/comment")
 public class CommentController {
@@ -24,16 +30,13 @@ public class CommentController {
 	@Autowired
 	Identity identity;
 		
-	@RequestMapping(value="",method=RequestMethod.GET)
-	
-	public String get(Model model){
-		
-		model.addAttribute("comment", commentService.get(1l));
-		model.addAttribute("username", identity.getUserName());
-		return "comment";
-	}
-	
+
 	//localhost:8080/kinbech/comment/1
+	/**
+	 * @param productId The product Id obtained from AJAX request
+	 * @param model The model which is going to be passed to commentservice
+	 * @return comment object encoded in JSON
+	 */
 	@RequestMapping(value=("/{productId}"),method=RequestMethod.GET)
 	public @ResponseBody Comment getComment(
 			@PathVariable("productId")Long productId
@@ -43,6 +46,13 @@ public class CommentController {
 		return commentService.get(productId);
 	}
 	
+	/**
+	 * @param commentId The id of the comment that the post is to be inserted 
+	 * @param post The message in the comment
+	 * @param bindingResult The result from binder about success or failure
+	 * @param model The model that is going to be passed to CommentService
+	 * @return The post message encoded as JSON
+	 */
 	@RequestMapping(value=("/{commentId}"),method=RequestMethod.POST)
 	public @ResponseBody Post saveComment(
 			@PathVariable("commentId")Long commentId
