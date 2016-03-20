@@ -1,8 +1,4 @@
-	// pathname is contextRoot/path/path/ so we want to get [1] that is where contextRoot is
-	// [0] has "" as a result of split 
-	var contextRoot = "/" + window.location.pathname.split( '/' )[1];
-	
-	
+
 
 function postSubmit(){
    	var dataToSend = JSON.stringify(serializeObject($('#')));
@@ -26,19 +22,16 @@ function postSubmit(){
 			'Accept': 'application/json',
 	        'Content-Type': 'application/json' 
 		},
-		url: contextRoot + '/comment/1',
+		url: contextRoot + '/comment/'+commentId,
 		dataType: "json",           // Accepts
  		data:JSON.stringify(post),
  		contentType: 'application/json',   // Sends
-		success: function(messageObject){
-			console.log(messageObject);
-			addcomment(postmessage,messageObject.username);
+		success: function(post){
+			addcomment(postmessage,post.username)
 		},
  
 		error: function(errorObject ){	
-//			error: function(jqXHR,  textStatus,  HTTPStatus ){	
-//	EXAMPLE:		error: function(jQuery XMLHttpRequest,  "error",  "Bad Request" ){	
-						
+					
 			if (errorObject.responseJSON.errorType == "ValidationError") {
 	 			$('#success').html("");
 	 			$('#errors').html("");
@@ -78,8 +71,7 @@ make_visible = function(id) {
     e.style.display = 'block';
  }	   
 
-// Translate form to array
-// Then put in JSON format
+
  function serializeObject (form)
 {
     var jsonObject = {};

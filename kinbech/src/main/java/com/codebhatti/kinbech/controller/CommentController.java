@@ -4,14 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
-
 import com.codebhatti.kinbech.domain.Comment;
 import com.codebhatti.kinbech.domain.Identity;
 import com.codebhatti.kinbech.domain.Post;
@@ -31,7 +28,6 @@ public class CommentController {
 	
 	public String get(Model model){
 		
-		System.out.println("---------fjsdklfjsdkfjsdkfjsdklfj--------------");
 		model.addAttribute("comment", commentService.get(1l));
 		model.addAttribute("username", identity.getUserName());
 		return "comment";

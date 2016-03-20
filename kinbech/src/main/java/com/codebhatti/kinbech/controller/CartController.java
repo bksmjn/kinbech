@@ -32,7 +32,6 @@ public class CartController {
 	@RequestMapping(value="/MyCart", method=RequestMethod.GET)
 	public String getViewMyCart(Model model) {
 		List<CartDetails> cartItemsList=new ArrayList<>();
-//		cart.getCartItems().forEach((k,v)->products.put(v.getProductId(),productService.findByProductId(v.getProductId())));
 		Map<Long, CartItem> items = cart.getCartItems();
 		Iterator<Long> iterator=items.keySet().iterator();
 		while(iterator.hasNext()) {
