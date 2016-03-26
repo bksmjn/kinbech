@@ -22,6 +22,9 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.context.annotation.Scope;
 
+/*
+ * @author Bikesh Maharjan
+ */
 @Entity
 @Table(name="users")
 public class User implements Serializable {
