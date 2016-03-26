@@ -23,7 +23,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.context.annotation.Scope;
 
 /*
- * @author Bikesh Maharjan V1
+ * @author Bikesh Maharjan V1.1
  */
 @Entity
 @Table(name="users")
